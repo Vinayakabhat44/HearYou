@@ -11,6 +11,7 @@
         <module name="feed-service" />
         <module name="discovery-service" />
         <module name="gateway-service" />
+        <module name="media-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -21,6 +22,7 @@
       <module name="feed" options="" />
       <module name="feed-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
+      <module name="media-service" options="-parameters" />
     </option>
   </component>
 </project>

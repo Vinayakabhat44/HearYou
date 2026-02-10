@@ -1,5 +1,7 @@
 package com.antigravity.feed.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +9,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Table(name = "stories")
@@ -32,6 +36,7 @@ public class Story {
     private Long userId;
 
     @Column(columnDefinition = "POINT")
+    @JsonIgnore
     private Point location;
 
     private String village;
@@ -41,6 +46,17 @@ public class Story {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @JsonProperty("location")
+    public Map<String, Double> getFormattedLocation() {
+        if (location == null) {
+            return null;
+        }
+        Map<String, Double> coords = new HashMap<>();
+        coords.put("longitude", location.getX());
+        coords.put("latitude", location.getY());
+        return coords;
+    }
 
     public enum StoryType {
         TEXT, AUDIO, VIDEO

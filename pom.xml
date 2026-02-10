@@ -27,6 +27,7 @@
 		<module>feed-service</module>
 		<module>discovery-service</module>
 		<module>gateway-service</module>
+		<module>media-service</module>
 	</modules>
 	
 	<dependencyManagement>
