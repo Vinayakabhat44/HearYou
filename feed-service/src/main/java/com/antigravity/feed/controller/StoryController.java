@@ -23,9 +23,18 @@ public class StoryController {
             @RequestParam(required = false) Double lat,
             @RequestParam(required = false) Double lng,
             Authentication authentication) {
-        // Extract userId from JWT token
         Long userId = Long.parseLong(authentication.getName());
         return ResponseEntity.ok(storyService.createStory(story, lat, lng, userId, file));
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Story> createStoryJson(
+            @RequestBody Story story,
+            @RequestParam(required = false) Double lat,
+            @RequestParam(required = false) Double lng,
+            Authentication authentication) {
+        Long userId = Long.parseLong(authentication.getName());
+        return ResponseEntity.ok(storyService.createStory(story, lat, lng, userId, null));
     }
 
     @DeleteMapping("/{id}")
