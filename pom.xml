@@ -28,6 +28,7 @@
 		<module>discovery-service</module>
 		<module>gateway-service</module>
 		<module>media-service</module>
+		<module>news-service</module>
 	</modules>
 	
 	<dependencyManagement>

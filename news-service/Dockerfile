@@ -4,13 +4,13 @@ WORKDIR /app
 # Copy parent pom
 COPY pom.xml .
 # Copy service pom and src
-COPY gateway-service/pom.xml gateway-service/
-COPY gateway-service/src gateway-service/src
-RUN mvn -f gateway-service/pom.xml clean package -DskipTests
+COPY news-service/pom.xml news-service/
+COPY news-service/src news-service/src
+RUN mvn -f news-service/pom.xml clean package -DskipTests
 
 # Run stage
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=build /app/gateway-service/target/*.jar app.jar
-EXPOSE 8080
+COPY --from=build /app/news-service/target/*.jar app.jar
+EXPOSE 8084
 ENTRYPOINT ["java", "-jar", "app.jar"]

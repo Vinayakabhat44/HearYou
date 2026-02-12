@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   discovery-service:
-    build: ./discovery-service
+    build:
+      context: .
+      dockerfile: discovery-service/Dockerfile
     ports:
       - "8761:8761"
     environment:
@@ -14,7 +16,9 @@ services:
       retries: 5
 
   gateway-service:
-    build: ./gateway-service
+    build:
+      context: .
+      dockerfile: gateway-service/Dockerfile
     ports:
       - "8080:8080"
     environment:
@@ -29,7 +33,9 @@ services:
       retries: 5
 
   auth-service:
-    build: ./auth-service
+    build:
+      context: .
+      dockerfile: auth-service/Dockerfile
     ports:
       - "8081:8081"
     environment:
@@ -50,7 +56,9 @@ services:
       retries: 5
 
   feed-service:
-    build: ./feed-service
+    build:
+      context: .
+      dockerfile: feed-service/Dockerfile
     ports:
       - "8082:8082"
     environment:
@@ -74,7 +82,9 @@ services:
       retries: 5
 
   media-service:
-    build: ./media-service
+    build:
+      context: .
+      dockerfile: media-service/Dockerfile
     ports:
       - "8083:8083"
     environment:
@@ -84,6 +94,28 @@ services:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:8083/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  news-service:
+    build:
+      context: .
+      dockerfile: news-service/Dockerfile
+    ports:
+      - "8084:8084"
+    environment:
+      - EUREKA_SERVER=${EUREKA_SERVER}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - NEWS_API_KEY=${NEWS_API_KEY}
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "wget", "-qO-", "http://localhost:8084/actuator/health" ]
       interval: 10s
       timeout: 5s
       retries: 5

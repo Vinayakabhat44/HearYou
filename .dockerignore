@@ -1,0 +1,15 @@
+**/target/
+**/.git/
+**/.idea/
+**/.vscode/
+**/.mvn/
+**/bin/
+**/out/
+*.iml
+.DS_Store
+.env
+run_log.txt
+PRODUCTION_READINESS.md
+WALKTHROUGH.md
+implementation_plan.md
+task.md

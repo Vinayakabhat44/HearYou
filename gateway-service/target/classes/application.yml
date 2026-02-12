@@ -19,6 +19,10 @@ spring:
           uri: lb://MEDIA-SERVICE
           predicates:
             - Path=/api/media/**
+        - id: news-service
+          uri: lb://NEWS-SERVICE
+          predicates:
+            - Path=/api/news/**
 
 eureka:
   client:
