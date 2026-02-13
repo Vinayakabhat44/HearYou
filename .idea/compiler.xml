@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="auth-service" />
+        <module name="news-service" />
         <module name="feed-service" />
         <module name="discovery-service" />
         <module name="gateway-service" />
@@ -23,6 +24,7 @@
       <module name="feed-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
       <module name="media-service" options="-parameters" />
+      <module name="news-service" options="-parameters" />
     </option>
   </component>
 </project>
