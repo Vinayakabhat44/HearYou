@@ -3,7 +3,10 @@ package com.antigravity.auth.service;
 import com.antigravity.auth.dto.AuthRequest;
 import com.antigravity.auth.dto.AuthResponse;
 import com.antigravity.auth.dto.RegisterRequest;
+
 import com.antigravity.auth.entity.User;
+import java.util.Map;
+import java.util.HashMap;
 import com.antigravity.auth.repository.UserRepository;
 import com.antigravity.auth.security.JwtUtil;
 import org.locationtech.jts.geom.Coordinate;
@@ -53,7 +56,7 @@ public class AuthServiceImpl implements AuthService {
         // Generate JWT token
         String token = jwtUtil.generateToken(userDetails);
 
-        return new AuthResponse(token, user.getUsername(), user.getEmail());
+        return new AuthResponse(token, user.getUsername(), user.getEmail(), user.getPreferences());
     }
 
     @Override
@@ -70,6 +73,7 @@ public class AuthServiceImpl implements AuthService {
         User user = new User();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
+        user.setMobileNumber(request.getMobileNumber());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole("USER");
 
@@ -125,6 +129,25 @@ public class AuthServiceImpl implements AuthService {
 
         String token = jwtUtil.generateToken(userDetails);
 
-        return new AuthResponse(token, user.getUsername(), user.getEmail());
+        return new AuthResponse(token, user.getUsername(), user.getEmail(), user.getPreferences());
+    }
+
+    @Override
+    public void updatePreferences(Long userId, Map<String, String> preferences) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (user.getPreferences() == null) {
+            user.setPreferences(new HashMap<>());
+        }
+        user.getPreferences().putAll(preferences);
+        userRepository.save(user);
+    }
+
+    @Override
+    public Map<String, String> getPreferences(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return user.getPreferences();
     }
 }

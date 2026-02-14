@@ -12,5 +12,7 @@ public interface StoryService {
 
     List<Story> getHierarchicalFeed(Long userId);
 
+    List<Story> getFriendsFeed(Long userId);
+
     void deleteStory(Long id, Long userId);
 }

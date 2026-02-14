@@ -1,68 +1,69 @@
 # Production Readiness Report: Antigravity
 
-This report evaluates the current state of the Antigravity microservices project and provides a roadmap for reaching production-grade stability, security, and performance.
+**Date:** 2026-02-14
+**Status:** Pre-Production / Staging Ready
+
+This report evaluates the current state of the Antigravity microservices project, highlighting recent improvements and outlining the remaining steps for a production launch.
 
 ## 1. Executive Summary
-The project has a solid microservices foundation using Spring Cloud (Eureka, Gateway) and Docker. It implements stateless JWT authentication and has basic health monitoring. However, several critical areas—namely secrets management, database migration strategy, and centralized logging—require attention before a production launch.
+
+The project has achieved significant stability with the recent **Docker standardization** (all services on `eclipse-temurin:17-jre-alpine`) and the implementation of **User Preferences** within the Auth Service. core services are containerized and orchestrated via Docker Compose. However, critical areas regarding **secrets management** and **centralized logging** remain to be addressed for a full production release.
 
 ---
 
-## 2. Architecture & Infrastructure
+## 2. Recent Improvements
+
+### ✅ Docker Standardization
+- **Feature:** Aligned all microservices to use `eclipse-temurin:17-jre-alpine` as the base image.
+- **Impact:** Reduced image size, improved security patching, and ensured consistent runtime environments across `social-service`, `auth-service`, `feed-service`, and others.
+- **Status:** **Completed & Verified**.
+
+### ✅ User Preferences Module
+- **Feature:** Integrated User Preferences storage directly into `auth-service`.
+- **Impact:** Users can now store and retrieve settings (e.g., theme, language, notifications) via `PUT /api/users/{id}/preferences`.
+- **Design:** Implemented as an `@ElementCollection` in the `User` entity to keep architecture simple without adding a new microservice overhead.
+- **Status:** **Completed & Verified**.
+
+---
+
+## 3. Architecture & Infrastructure
 
 | Component | Status | Analysis |
 | :--- | :--- | :--- |
-| **Orchestration** | 🟡 Partial | Using `docker-compose`. Recommended: Move to Kubernetes (K8s) for auto-scaling and self-healing. |
-| **Service Discovery** | 🟢 Ready | Eureka is implemented and services are registering correctly. |
-| **API Gateway** | 🟢 Ready | Gateway is routing requests and currently holds potential for global filters (rate limiting, etc.). |
-| **Persistence** | 🟡 Partial | MySQL 8.0 is used with spatial support. |
+| **Containerization** | 🟢 Ready | All services Dockerized with optimized multi-stage builds. |
+| **Orchestration** | 🟡 Partial | `docker-compose` is excellent for dev/staging. **Recommendation:** Move to Kubernetes (K8s) or ECS for production auto-scaling. |
+| **Service Discovery** | 🟢 Ready | Netflix Eureka is stable; services register and discover dynamically. |
+| **API Gateway** | 🟢 Ready | Spring Cloud Gateway is effectively routing requests. |
 
 ---
 
-## 3. Security Analysis
+## 4. Security Audit
 
 | Category | Status | Details |
 | :--- | :--- | :--- |
-| **Authentication** | 🟢 Ready | RS256 JWT with keystore implemented. Stateless and secure. |
-| **Secrets Management** | 🔴 Critical | Secrets are currently in `.env` and `application.properties`. **Recommendation**: Use Vault, AWS Secrets Manager, or K8s Secrets. |
-| **Network Security** | 🟡 Partial | Services communicate over internal Docker network. **Recommendation**: Implement mTLS (e.g., via Istio) for inter-service communication. |
-| **Database Access** | 🟡 Partial | Using root user for some services. **Recommendation**: Create application-specific users with least privilege. |
+| **Authentication** | 🟢 Ready | RS256 JWT implementation is secure and stateless. |
+| **Secrets Management** | 🔴 Critical | Secrets are currently in `.env` files. **Action:** Migrate to AWS Secrets Manager, HashiCorp Vault, or K8s Secrets. |
+| **Network Policy** | 🟡 Partial | Internal Docker network is used. **Recommendation:** Implement mTLS for zero-trust inter-service communication. |
 
 ---
 
-## 4. Resilience & Scalability
+## 5. Resilience & Observability
 
-| Checklist | Status | Recommendation |
+| Area | Status | Recommendation |
 | :--- | :--- | :--- |
-| **Health Checks** | 🟢 Ready | Docker health checks and Spring Boot Actuator `/health` probes are configured. |
-| **Database Migrations** | 🔴 Critical | Using `hibernate.ddl-auto=update`. **Recommendation**: Replace with Flyway or Liquibase for versioned migrations. |
-| **Retries/Circuit Breakers**| 🟡 Partial | `RetryAspect` found in feed-service. **Recommendation**: Standardize with Resilience4j across all services. |
-| **Caching** | 🟡 Ready | Redis implemented for feed-service. Ensure Redis is clustered for production. |
+| **Health Checks** | 🟢 Ready | Actuator `/health` endpoints are live and integrated with Docker healthchecks. |
+| **Logging** | 🟠 Needs Work | Logs are currently isolated in containers. **Action:** Implement EFK (Elasticsearch, Fluentd, Kibana) or simpler centralized logging (e.g., Loki). |
+| **Database Migrations** | 🟠 Needs Work | Reliance on `hibernate.ddl-auto` is risky. **Action:** Integrate Flyway for versioned schema control. |
 
 ---
 
-## 5. Observability (Logging & Monitoring)
+## 6. Roadmap directly to Production
 
-| Area | Status | Current Setup / Recommendation |
-| :--- | :--- | :--- |
-| **Health Probes** | 🟢 Ready | Actuator probes exposed (`health`, `info`). |
-| **Metrics** | 🟢 Ready | Prometheus endpoints are exposed via Actuator. |
-| **Centralized Logging** | 🔴 Missing | Logs are local to containers. **Recommendation**: Implement ELK Stack (Elasticsearch, Logstash, Kibana) or EFK. |
-| **Distributed Tracing** | 🔴 Missing | No tracing identified. **Recommendation**: Integrate Spring Cloud Sleuth/Micrometer Tracing with Zipkin or Jaeger. |
+### Immediate Next Steps (Priority 1)
+1.  **Secret Rotation:** Move database passwords and JWT keys out of Git/Environment files.
+2.  **Database Migration:** Initialize Flyway for `auth-service` and `feed-service`.
+3.  **Log Aggregation:** Deploy a lightweight log collector to view errors across services centrally.
 
----
-
-## 6. Prioritized Recommendations
-
-### Phase 1: High Priority (Immediate Action)
-1. **Externalize Secrets**: Remove passwords from `.env` and codebase.
-2. **Versioned Migrations**: Integrate Flyway/Liquibase to manage DB schema changes safely.
-3. **Least Privilege DB**: Stop using `root` for application connections.
-
-### Phase 2: Medium Priority (Stability)
-1. **Centralized Logging**: Setup a log aggregator.
-2. **Distributed Tracing**: Essential for debugging request flows across services.
-3. **Resilience4j**: Standardize circuit breaking and retries.
-
-### Phase 3: Long Term (Scaling)
-1. **Kubernetes Deployment**: Move from Docker Compose to K8s.
-2. **CI/CD Pipeline**: Automate testing and deployment to staging/production environments.
+### Post-Launch (Priority 2)
+1.  **Kubernetes Migration:** Create Helm charts for deployment.
+2.  **Distributed Tracing:** Add Micrometer Tracing/Zipkin to visualize request latency bottleneck.

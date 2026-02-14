@@ -26,6 +26,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(unique = true)
+    private String mobileNumber;
+
     @Column(nullable = false)
     @JsonIgnore
     private String password;
@@ -42,6 +45,12 @@ public class User {
     private String district;
     private String state;
     private String pincode;
+
+    @ElementCollection
+    @CollectionTable(name = "user_preferences", joinColumns = @JoinColumn(name = "user_id"))
+    @MapKeyColumn(name = "preference_key")
+    @Column(name = "preference_value")
+    private Map<String, String> preferences = new HashMap<>();
 
     @JsonProperty("homeLocation")
     public Map<String, Double> getFormattedLocation() {

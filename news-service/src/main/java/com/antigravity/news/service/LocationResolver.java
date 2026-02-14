@@ -43,10 +43,14 @@ public class LocationResolver {
 
         // 4. Country Fallback
         if (article.getCountry() == null) {
-            if (text.contains("international") || text.contains("world") || text.contains("global")
-                    || text.contains("usa") || text.contains("uk")) {
+            // Only set to International if explicitly international context or specific
+            // foreign country
+            if (article.getCategory() != null && article.getCategory().equalsIgnoreCase("International")) {
                 article.setCountry("International");
-                article.setCategory("International"); // Force category
+            } else if (text.contains("usa") || text.contains("uk") || text.contains("china")
+                    || text.contains("russia")) {
+                article.setCountry("International");
+                article.setCategory("International");
             } else {
                 article.setCountry("India"); // Default to India
                 if (article.getCategory() == null) {

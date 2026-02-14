@@ -1,0 +1,858 @@
+[
+  {
+    "name": "BBC News - Home - United Kingdom",
+    "url": "http://feeds.bbci.co.uk/news/rss.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "United Kingdom",
+    "active": true
+  },
+  {
+    "name": "World news | The Guardian - United Kingdom",
+    "url": "https://www.theguardian.com/world/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "United Kingdom",
+    "active": true
+  },
+  {
+    "name": "Home | Mail Online - United Kingdom",
+    "url": "https://www.dailymail.co.uk/home/index.rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "United Kingdom",
+    "active": true
+  },
+  {
+    "name": "The Independent - United Kingdom",
+    "url": "http://www.independent.co.uk/news/uk/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "United Kingdom",
+    "active": true
+  },
+  {
+    "name": "Daily Express :: News Feed - United Kingdom",
+    "url": "http://feeds.feedburner.com/daily-express-news-showbiz",
+    "type": "RSS",
+    "language": "en",
+    "region": "United Kingdom",
+    "active": true
+  },
+  {
+    "name": "BBC News - India - India",
+    "url": "http://feeds.bbci.co.uk/news/world/asia/india/rss.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "India | The Guardian - India",
+    "url": "https://www.theguardian.com/world/india/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "SEBI RSS Feed - India",
+    "url": "https://www.sebi.gov.in/sebirss.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "Times of India - India",
+    "url": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "The Hindu - Home - India",
+    "url": "https://www.thehindu.com/feeder/default.rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "NDTV News - Topstories - India",
+    "url": "https://feeds.feedburner.com/ndtvnews-top-stories",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "India Today - India",
+    "url": "https://www.indiatoday.in/rss/home",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "The Indian Express - India",
+    "url": "http://indianexpress.com/print/front-page/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "News18 - India",
+    "url": "https://www.news18.com/rss/world.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "DNA India - India",
+    "url": "https://www.dnaindia.com/feeds/india.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "Firstpost - India",
+    "url": "https://www.firstpost.com/rss/india.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "Business Standard - India",
+    "url": "https://www.business-standard.com/rss/home_page_top_stories.rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "Outlook India - India",
+    "url": "https://www.outlookindia.com/rss/main/magazine",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "Free Press Journal - India",
+    "url": "https://www.freepressjournal.in/stories.rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "Deccan Chronicle - India",
+    "url": "https://www.deccanchronicle.com/rss_feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "Moneycontrol - India",
+    "url": "http://www.moneycontrol.com/rss/latestnews.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "Economic Times - India",
+    "url": "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
+    "type": "RSS",
+    "language": "en",
+    "region": "India",
+    "active": true
+  },
+  {
+    "name": "CBC | Top Stories News - Canada",
+    "url": "https://www.cbc.ca/cmlink/rss-topstories",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "CTVNews.ca - Canada",
+    "url": "https://www.ctvnews.ca/rss/ctvnews-ca-top-stories-public-rss-1.822009",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "Financial Post - Canada",
+    "url": "https://business.financialpost.com/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "National Post - Canada",
+    "url": "https://nationalpost.com/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "Ottawa Citizen - Canada",
+    "url": "https://ottawacitizen.com/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "The Province - Canada",
+    "url": "https://theprovince.com/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "LaPresse.ca - Canada",
+    "url": "https://www.lapresse.ca/actualites/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "Toronto Star - Canada",
+    "url": "https://www.thestar.com/content/thestar/feed.RSSManagerServlet.articles.topstories.rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "Toronto Sun - Canada",
+    "url": "https://torontosun.com/category/news/feed",
+    "type": "RSS",
+    "language": "en",
+    "region": "Canada",
+    "active": true
+  },
+  {
+    "name": "Daily Telegraph - Australia",
+    "url": "https://www.dailytelegraph.com.au/news/breaking-news/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "Sydney Morning Herald - Australia",
+    "url": "https://www.smh.com.au/rss/feed.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "Herald Sun - Australia",
+    "url": "https://www.heraldsun.com.au/news/breaking-news/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "ABC News - Australia",
+    "url": "https://www.abc.net.au/news/feed/1948/rss.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "The Age - Australia",
+    "url": "https://www.theage.com.au/rss/feed.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "The Courier Mail - Australia",
+    "url": "https://www.couriermail.com.au/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "PerthNow - Australia",
+    "url": "https://www.perthnow.com.au/news/feed",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "The Canberra Times - Australia",
+    "url": "https://www.canberratimes.com.au/rss.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "Brisbane Times - Australia",
+    "url": "https://www.brisbanetimes.com.au/rss/feed.xml",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "Independent Australia - Australia",
+    "url": "http://feeds.feedburner.com/IndependentAustralia",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "Business News - Australia",
+    "url": "https://www.businessnews.com.au/rssfeed/latest.rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "The Mercury - Australia",
+    "url": "https://www.themercury.com.au/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "Michael West - Australia",
+    "url": "https://www.michaelwest.com.au/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "Australia",
+    "active": true
+  },
+  {
+    "name": "SowetanLIVE - South Africa",
+    "url": "https://www.sowetanlive.co.za/rss/?publication=sowetan-live",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "TechCentral - South Africa",
+    "url": "https://techcentral.co.za/feed",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "News24 - South Africa",
+    "url": "http://feeds.news24.com/articles/news24/TopStories/rss",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "Eyewitness News - South Africa",
+    "url": "https://ewn.co.za/RSS%20Feeds/Latest%20News",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "The Citizen - South Africa",
+    "url": "https://citizen.co.za/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "Daily Maverick - South Africa",
+    "url": "https://www.dailymaverick.co.za/dmrss/",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "Moneyweb - South Africa",
+    "url": "https://www.moneyweb.co.za/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "IOL - South Africa",
+    "url": "http://rss.iol.io/iol/news",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "TimesLIVE - South Africa",
+    "url": "https://www.timeslive.co.za/rss/",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "The South African - South Africa",
+    "url": "https://www.thesouthafrican.com/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "Axios - South Africa",
+    "url": "https://api.axios.com/feed/",
+    "type": "RSS",
+    "language": "en",
+    "region": "South Africa",
+    "active": true
+  },
+  {
+    "name": "The Guardian Mexico - Mexico",
+    "url": "https://www.theguardian.com/world/mexico/rss",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "Exc\u00e9lsior - Mexico",
+    "url": "https://www.excelsior.com.mx/rss.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "Reforma - Mexico",
+    "url": "https://www.reforma.com/rss/portada.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "Vanguardia MX - Mexico",
+    "url": "https://vanguardia.com.mx/rss.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "El Financiero - Mexico",
+    "url": "https://www.elfinanciero.com.mx/arc/outboundfeeds/rss/?outputType=xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "ElNorte - Mexico",
+    "url": "https://www.elnorte.com/rss/portada.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "El Informador - Mexico",
+    "url": "https://www.informador.mx/rss/ultimas-noticias.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "24 Horas - Mexico",
+    "url": "https://www.24-horas.mx/feed/",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "Mexico News Daily - Mexico",
+    "url": "https://mexiconewsdaily.com/feed/",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "El Diario - Mexico",
+    "url": "https://diario.mx/jrz/media/sitemaps/rss.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Mexico",
+    "active": true
+  },
+  {
+    "name": "The Local - Spain",
+    "url": "https://feeds.thelocal.com/rss/es",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "EL PA\u00cdS - Spain",
+    "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "El Confidencial - Spain",
+    "url": "https://rss.elconfidencial.com/espana/",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "ElDiario.es - Spain",
+    "url": "https://www.eldiario.es/rss/",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "Expansion - Spain",
+    "url": "https://e00-expansion.uecdn.es/rss/portada.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "El Peri\u00f3dico - Spain",
+    "url": "https://www.elperiodico.com/es/rss/rss_portada.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "Huffington Post - Spain",
+    "url": "https://www.huffingtonpost.es/feeds/index.xml",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "Euro Weekly News - Spain",
+    "url": "https://www.euroweeklynews.com/feed/",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "Agencia EFE - Spain",
+    "url": "https://www.efe.com/efe/english/4/rss",
+    "type": "RSS",
+    "language": "es",
+    "region": "Spain",
+    "active": true
+  },
+  {
+    "name": "ZEIT ONLINE - Germany",
+    "url": "http://newsfeed.zeit.de/index",
+    "type": "RSS",
+    "language": "de",
+    "region": "Germany",
+    "active": true
+  },
+  {
+    "name": "FOCUS Online - Germany",
+    "url": "https://rss.focus.de/fol/XML/rss_folnews.xml",
+    "type": "RSS",
+    "language": "de",
+    "region": "Germany",
+    "active": true
+  },
+  {
+    "name": "FAZ.NET - Germany",
+    "url": "https://www.faz.net/rss/aktuell/",
+    "type": "RSS",
+    "language": "de",
+    "region": "Germany",
+    "active": true
+  },
+  {
+    "name": "tagesschau.de - Germany",
+    "url": "http://www.tagesschau.de/xml/rss2",
+    "type": "RSS",
+    "language": "de",
+    "region": "Germany",
+    "active": true
+  },
+  {
+    "name": "Deutsche Welle - Germany",
+    "url": "https://rss.dw.com/rdf/rss-en-all",
+    "type": "RSS",
+    "language": "de",
+    "region": "Germany",
+    "active": true
+  },
+  {
+    "name": "Japan Times - Japan",
+    "url": "https://www.japantimes.co.jp/feed/topstories/",
+    "type": "RSS",
+    "language": "ja",
+    "region": "Japan",
+    "active": true
+  },
+  {
+    "name": "Japan Today - Japan",
+    "url": "https://japantoday.com/feed",
+    "type": "RSS",
+    "language": "ja",
+    "region": "Japan",
+    "active": true
+  },
+  {
+    "name": "News On Japan - Japan",
+    "url": "http://www.newsonjapan.com/rss/top.xml",
+    "type": "RSS",
+    "language": "ja",
+    "region": "Japan",
+    "active": true
+  },
+  {
+    "name": "Kyodo News - Japan",
+    "url": "https://english.kyodonews.net/rss/all.xml",
+    "type": "RSS",
+    "language": "ja",
+    "region": "Japan",
+    "active": true
+  },
+  {
+    "name": "BRIDGE - Japan",
+    "url": "http://feeds.feedburner.com/SdJapan",
+    "type": "RSS",
+    "language": "ja",
+    "region": "Japan",
+    "active": true
+  },
+  {
+    "name": "NYT > Japan - Japan",
+    "url": "https://www.nytimes.com/svc/collections/v1/publish/http://www.nytimes.com/topic/destination/japan/rss.xml",
+    "type": "RSS",
+    "language": "ja",
+    "region": "Japan",
+    "active": true
+  },
+  {
+    "name": "Livedoor - Japan",
+    "url": "https://news.livedoor.com/topics/rss/top.xml",
+    "type": "RSS",
+    "language": "ja",
+    "region": "Japan",
+    "active": true
+  },
+  {
+    "name": "Asahi - Japan",
+    "url": "http://rss.asahi.com/rss/asahi/newsheadlines.rdf",
+    "type": "RSS",
+    "language": "ja",
+    "region": "Japan",
+    "active": true
+  },
+  {
+    "name": "Folha de S.Paulo - Brazil",
+    "url": "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml",
+    "type": "RSS",
+    "language": "pt",
+    "region": "Brazil",
+    "active": true
+  },
+  {
+    "name": "Portal EBC - Brazil",
+    "url": "http://www.ebc.com.br/rss/feed.xml",
+    "type": "RSS",
+    "language": "pt",
+    "region": "Brazil",
+    "active": true
+  },
+  {
+    "name": "R7 - Brazil",
+    "url": "https://noticias.r7.com/feed.xml",
+    "type": "RSS",
+    "language": "pt",
+    "region": "Brazil",
+    "active": true
+  },
+  {
+    "name": "UOL - Brazil",
+    "url": "http://rss.home.uol.com.br/index.xml",
+    "type": "RSS",
+    "language": "pt",
+    "region": "Brazil",
+    "active": true
+  },
+  {
+    "name": "The Rio Times - Brazil",
+    "url": "https://riotimesonline.com/feed/",
+    "type": "RSS",
+    "language": "pt",
+    "region": "Brazil",
+    "active": true
+  },
+  {
+    "name": "Brasil Wire - Brazil",
+    "url": "http://www.brasilwire.com/feed/",
+    "type": "RSS",
+    "language": "pt",
+    "region": "Brazil",
+    "active": true
+  },
+  {
+    "name": "Jornal de Bras\u00edlia - Brazil",
+    "url": "https://jornaldebrasilia.com.br/feed/",
+    "type": "RSS",
+    "language": "pt",
+    "region": "Brazil",
+    "active": true
+  },
+  {
+    "name": "Lenta.ru - Russia",
+    "url": "https://lenta.ru/rss",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "Vesti.Ru - Russia",
+    "url": "https://www.vesti.ru/vesti.rss",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "Gazeta.Ru - Russia",
+    "url": "https://www.gazeta.ru/export/rss/first.xml",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "Moskovsky Komsomolets - Russia",
+    "url": "https://www.mk.ru/rss/index.xml",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "Rossiyskaya Gazeta - Russia",
+    "url": "https://rg.ru/xml/index.xml",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "NEWSru - Russia",
+    "url": "https://rss.newsru.com/top/big/",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "RT - Russia",
+    "url": "https://www.rt.com/rss/",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "Meduza - Russia",
+    "url": "https://meduza.io/rss/all",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "Russia Insider - Russia",
+    "url": "https://russia-insider.com/en/all-content/rss",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "TASS - Russia",
+    "url": "http://tass.com/rss/v2.xml",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "The Moscow Times - Russia",
+    "url": "https://www.themoscowtimes.com/rss/news",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "Kommersant - Russia",
+    "url": "https://www.kommersant.ru/RSS/main.xml",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  },
+  {
+    "name": "PravdaReport - Russia",
+    "url": "https://www.pravdareport.com/export.xml",
+    "type": "RSS",
+    "language": "ru",
+    "region": "Russia",
+    "active": true
+  }
+]

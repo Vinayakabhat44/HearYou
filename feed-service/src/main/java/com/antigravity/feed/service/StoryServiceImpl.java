@@ -29,6 +29,7 @@ public class StoryServiceImpl implements StoryService {
     private final LocationCacheService locationCacheService;
     private final AuthServiceClient authServiceClient;
     private final MediaServiceClient mediaServiceClient;
+    private final com.antigravity.feed.client.SocialClient socialClient;
     private final GeometryFactory geometryFactory = new GeometryFactory();
 
     @Override
@@ -116,6 +117,16 @@ public class StoryServiceImpl implements StoryService {
                 userLocation.getTaluk(),
                 userLocation.getDistrict(),
                 PageRequest.of(0, 20)).getContent();
+    }
+
+    @Override
+    @TrackTime
+    public List<Story> getFriendsFeed(Long userId) {
+        List<Long> friendIds = socialClient.getFriendIds(userId);
+        if (friendIds == null || friendIds.isEmpty()) {
+            return List.of();
+        }
+        return storyRepository.findByUserIdInOrderByCreatedAtDesc(friendIds);
     }
 
     @Override

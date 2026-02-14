@@ -125,6 +125,28 @@ services:
       timeout: 5s
       retries: 5
 
+  social-service:
+    build:
+      context: .
+      dockerfile: social-service/Dockerfile
+    ports:
+      - "8086:8086"
+    environment:
+      - EUREKA_SERVER=${EUREKA_SERVER}
+      - DB_SOCIAL_URL=${DB_SOCIAL_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_ROOT_PASSWORD}
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "wget", "-qO-", "http://localhost:8086/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   mysql:
     image: mysql:8.0
     environment:

@@ -23,4 +23,10 @@ public class FeedController {
         Long userId = Long.parseLong(authentication.getName());
         return ResponseEntity.ok(storyService.getHierarchicalFeed(userId));
     }
+
+    @GetMapping("/friends")
+    public ResponseEntity<List<Story>> getFriendsFeed(Authentication authentication) {
+        Long userId = Long.parseLong(authentication.getName());
+        return ResponseEntity.ok(storyService.getFriendsFeed(userId));
+    }
 }
