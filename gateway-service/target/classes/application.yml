@@ -59,3 +59,20 @@ info:
     name: ${spring.application.name}
     description: API Gateway
     version: 0.0.1
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Auth Service
+        url: /api/auth/v3/api-docs
+      - name: Social Service
+        url: /api/social/v3/api-docs
+      - name: Feed Service
+        url: /api/feed/v3/api-docs
+      - name: News Service
+        url: /api/news/v3/api-docs
+      - name: Media Service
+        url: /api/media/v3/api-docs

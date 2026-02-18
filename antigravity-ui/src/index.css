@@ -1,0 +1,78 @@
+:root {
+  /* Colors */
+  --primary: hsl(260, 100%, 65%);
+  --primary-glow: hsla(260, 100%, 65%, 0.3);
+  --secondary: hsl(320, 100%, 60%);
+  --background: hsl(240, 30%, 8%);
+  --surface: hsla(240, 25%, 12%, 0.7);
+  --surface-border: hsla(240, 25%, 30%, 0.5);
+  --text-main: hsl(0, 0%, 95%);
+  --text-muted: hsl(240, 10%, 70%);
+  
+  /* Layout */
+  --nav-width: 260px;
+  --header-height: 70px;
+  --sidebar-width: 320px;
+  
+  /* Effects */
+  --glass-bg: blur(12px);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --transition: all 0.3s ease;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-main);
+  background-color: var(--background);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(circle at 0% 0%, hsla(260, 100%, 65%, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, hsla(320, 100%, 60%, 0.05) 0%, transparent 50%);
+}
+
+.glass-panel {
+  background: var(--surface);
+  backdrop-filter: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-bg);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--card-shadow);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+

@@ -1,0 +1,122 @@
+.stories-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tabs-container {
+    padding: 0.8rem;
+    border-radius: 1rem;
+    position: sticky;
+    top: 1rem;
+    z-index: 10;
+}
+
+.tabs-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.tabs-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.tab-item {
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.8rem;
+    white-space: nowrap;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+
+.tab-item:hover {
+    color: var(--text-main);
+    background: hsla(0, 0%, 100%, 0.05);
+}
+
+.tab-item.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px var(--primary-glow);
+}
+
+.feed-item {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.feed-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.item-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--surface-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-meta h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.item-meta span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.item-content p {
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.item-image-placeholder {
+    width: 100%;
+    height: 300px;
+    background: var(--surface-border);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+}
+
+.item-actions {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--surface-border);
+    margin-top: 1.2rem;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 0.6rem;
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.action-btn:hover {
+    background: hsla(0, 0%, 100%, 0.05);
+    color: var(--primary);
+}

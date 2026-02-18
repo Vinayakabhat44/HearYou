@@ -24,8 +24,11 @@ public class SecurityConfig {
                 http
                                 .csrf(csrf -> csrf.disable())
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/api/feeds/**").permitAll() // Allow public access to
-                                                                                              // feeds
+                                                .requestMatchers("/api/feeds/**", "/v3/api-docs/**",
+                                                                "/api/feed/v3/api-docs/**", "/swagger-ui/**",
+                                                                "/swagger-ui.html")
+                                                .permitAll() // Allow public access to
+                                                // feeds
                                                 .requestMatchers("/actuator/health", "/actuator/info").permitAll()
                                                 .requestMatchers("/error").permitAll() // Allow error responses to be
                                                                                        // sent
