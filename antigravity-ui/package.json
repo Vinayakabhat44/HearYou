@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@elastic/apm-rum": "^5.17.2",
+    "@elastic/apm-rum-react": "^2.0.8",
     "axios": "^1.13.5",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",

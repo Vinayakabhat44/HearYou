@@ -52,7 +52,8 @@ The project has achieved significant stability with the recent **Docker standard
 | Area | Status | Recommendation |
 | :--- | :--- | :--- |
 | **Health Checks** | 🟢 Ready | Actuator `/health` endpoints are live and integrated with Docker healthchecks. |
-| **Logging** | 🟠 Needs Work | Logs are currently isolated in containers. **Action:** Implement EFK (Elasticsearch, Fluentd, Kibana) or simpler centralized logging (e.g., Loki). |
+| **Logging** | 🟢 Ready | Centralized ELK Stack (7.x/8.x) integrated for all services with logstash ingestion. |
+| **Observability** | 🟢 Ready | Elastic APM Server & RUM agent integrated for distributed tracing. |
 | **Database Migrations** | 🟠 Needs Work | Reliance on `hibernate.ddl-auto` is risky. **Action:** Integrate Flyway for versioned schema control. |
 
 ---
@@ -60,9 +61,9 @@ The project has achieved significant stability with the recent **Docker standard
 ## 6. Roadmap directly to Production
 
 ### Immediate Next Steps (Priority 1)
-1.  **Secret Rotation:** Move database passwords and JWT keys out of Git/Environment files.
-2.  **Database Migration:** Initialize Flyway for `auth-service` and `feed-service`.
-3.  **Log Aggregation:** Deploy a lightweight log collector to view errors across services centrally.
+1.  **Observability:** Deploy Production-Grade ELK Stack (Security + Persistence + APM).
+2.  **Secret Rotation:** Move database passwords and JWT keys out of Git/Environment files.
+3.  **Database Migration:** Initialize Flyway for `auth-service` and `feed-service`.
 
 ### Post-Launch (Priority 2)
 1.  **Kubernetes Migration:** Create Helm charts for deployment.

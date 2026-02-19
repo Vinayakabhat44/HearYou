@@ -27,15 +27,27 @@ docker-compose up --build
 
 Once the services are up, you can verify them at these locations:
 
-| Service | Port | Health Check / Dashboard |
+| Service | Port | Description |
 | :--- | :--- | :--- |
-| **API Gateway** | 8080 | [Health Check](http://localhost:8080/actuator/health) |
-| **Discovery Service** | 8761 | [Eureka Dashboard](http://localhost:8761) |
-| **Auth Service** | 8081 | [Health Check](http://localhost:8081/actuator/health) |
-| **Feed Service** | 8082 | [Health Check](http://localhost:8082/actuator/health) |
-| **Media Service** | 8083 | [Health Check](http://localhost:8083/actuator/health) |
+| **API Gateway** | 8080 | Central Entry Point |
+| **Discovery Service** | 8761 | Eureka Dashboard |
+| **Auth Service** | 8081 | Identity & Auth |
+| **Feed Service** | 8082 | Location & Social Feed |
+| **Media Service** | 8083 | Multi-Cloud Media Storage |
+| **News Service** | 8084 | Localized News Aggregator |
+| **Social Service** | 8086 | Relationships & Groups |
+| **Kibana** | 5601 | Log Analysis & APM |
 
-### 5. Stopping the System
+### 5. Documentation
+
+The project includes detailed documentation for each layer:
+
+- **Architecture**: See [WALKTHROUGH.md](./WALKTHROUGH.md) for request flows.
+- **Frontend Integration**: See [UI_INTEGRATION.md](./UI_INTEGRATION.md) for API contracts.
+- **Security**: See [JWT_FLOW.md](./JWT_FLOW.md).
+- **Operations**: See [PRODUCTION_READINESS.md](./PRODUCTION_READINESS.md).
+
+### 6. Stopping the System
 To stop and remove the containers, use:
 ```bash
 docker-compose down

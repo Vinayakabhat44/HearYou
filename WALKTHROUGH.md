@@ -12,12 +12,19 @@ graph TD
     Gateway --> Auth_Service["Auth Service"]
     Gateway --> Feed_Service["Feed Service"]
     Gateway --> Media_Service["Media Service"]
+    Gateway --> News_Service["News Service"]
+    Gateway --> Social_Service["Social Service"]
     
     Feed_Service --> DB[("MySQL Database")]
     Feed_Service --> ObjectStore["Object Storage"]
+    Feed_Service --> Redis[("Redis Cache")]
     
-    Note1["Auth Service issues JWT signed with Private Key"]
-    Note2["Services validate JWT using Public Key"]
+    Gateway --> ELK["Elastic Stack (Logging & APM)"]
+    Auth_Service --> ELK
+    Feed_Service --> ELK
+    Media_Service --> ELK
+    News_Service --> ELK
+    Social_Service --> ELK
 ```
 
 ## 2. Request Flow Breakdown

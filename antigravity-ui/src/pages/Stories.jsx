@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import feedService from '../services/feedService';
+import TabScroll from '../components/TabScroll';
 import './Stories.css';
 
 const Stories = () => {
@@ -31,19 +32,11 @@ const Stories = () => {
 
     return (
         <div className="stories-page">
-            <div className="tabs-container glass-panel">
-                <div className="tabs-scroll">
-                    {tabs.map(tab => (
-                        <button
-                            key={tab}
-                            className={`tab-item ${activeTab === tab ? 'active' : ''}`}
-                            onClick={() => setActiveTab(tab)}
-                        >
-                            {tab}
-                        </button>
-                    ))}
-                </div>
-            </div>
+            <TabScroll
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabChange={setActiveTab}
+            />
 
             <div className="feed-container">
                 {loading ? (
@@ -55,7 +48,7 @@ const Stories = () => {
                                 <div className="item-avatar">{item.author?.[0]?.toUpperCase() || '?'}</div>
                                 <div className="item-meta">
                                     <h3>{item.author || 'Anonymous'}</h3>
-                                    <span>{item.timestamp || 'Just now'} • {item.location || activeTab}</span>
+                                    <span>{item.timestamp || 'Just now'} • {item.location && typeof item.location === 'object' ? `${item.location.latitude.toFixed(2)}, ${item.location.longitude.toFixed(2)}` : (item.location || activeTab)}</span>
                                 </div>
                             </div>
                             <div className="item-content">

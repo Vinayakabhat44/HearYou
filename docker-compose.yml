@@ -9,6 +9,18 @@ services:
       - "8761:8761"
     environment:
       - EUREKA_HOSTNAME=discovery-service
+      - ELASTIC_APM_SERVICE_NAME=discovery-service
+      - ELASTIC_APM_SERVER_URL=${ELASTIC_APM_SERVER_URL}
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
+      - ELASTIC_APM_ENVIRONMENT=production
+      - ELASTIC_APM_APPLICATION_PACKAGES=com.antigravity
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      apm-server:
+        condition: service_healthy
+      logstash:
+        condition: service_healthy
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:8761/actuator/health" ]
       interval: 10s
@@ -23,8 +35,19 @@ services:
       - "8080:8080"
     environment:
       - EUREKA_SERVER=http://discovery-service:8761/eureka/
+      - ELASTIC_APM_SERVICE_NAME=gateway-service
+      - ELASTIC_APM_SERVER_URL=${ELASTIC_APM_SERVER_URL}
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
+      - ELASTIC_APM_ENVIRONMENT=production
+      - ELASTIC_APM_APPLICATION_PACKAGES=com.antigravity
     depends_on:
       discovery-service:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      apm-server:
+        condition: service_healthy
+      logstash:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:8080/actuator/health" ]
@@ -44,10 +67,21 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_ROOT_PASSWORD}
       - JWT_KEYSTORE_PASSWORD=${JWT_KEYSTORE_PASSWORD}
+      - ELASTIC_APM_SERVICE_NAME=auth-service
+      - ELASTIC_APM_SERVER_URL=${ELASTIC_APM_SERVER_URL}
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
+      - ELASTIC_APM_ENVIRONMENT=production
+      - ELASTIC_APM_APPLICATION_PACKAGES=com.antigravity
     depends_on:
       mysql:
         condition: service_healthy
       discovery-service:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      apm-server:
+        condition: service_healthy
+      logstash:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:8081/actuator/health" ]
@@ -68,12 +102,23 @@ services:
       - DB_PASSWORD=${DB_ROOT_PASSWORD}
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
+      - ELASTIC_APM_SERVICE_NAME=feed-service
+      - ELASTIC_APM_SERVER_URL=${ELASTIC_APM_SERVER_URL}
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
+      - ELASTIC_APM_ENVIRONMENT=production
+      - ELASTIC_APM_APPLICATION_PACKAGES=com.antigravity
     depends_on:
       mysql:
         condition: service_healthy
       redis:
         condition: service_healthy
       discovery-service:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      apm-server:
+        condition: service_healthy
+      logstash:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:8082/actuator/health" ]
@@ -89,8 +134,19 @@ services:
       - "8083:8083"
     environment:
       - EUREKA_SERVER=${EUREKA_SERVER}
+      - ELASTIC_APM_SERVICE_NAME=media-service
+      - ELASTIC_APM_SERVER_URL=${ELASTIC_APM_SERVER_URL}
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
+      - ELASTIC_APM_ENVIRONMENT=production
+      - ELASTIC_APM_APPLICATION_PACKAGES=com.antigravity
     depends_on:
       discovery-service:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      apm-server:
+        condition: service_healthy
+      logstash:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:8083/actuator/health" ]
@@ -112,12 +168,23 @@ services:
       - DB_NEWS_URL=${DB_NEWS_URL}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_ROOT_PASSWORD}
+      - ELASTIC_APM_SERVICE_NAME=news-service
+      - ELASTIC_APM_SERVER_URL=${ELASTIC_APM_SERVER_URL}
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
+      - ELASTIC_APM_ENVIRONMENT=production
+      - ELASTIC_APM_APPLICATION_PACKAGES=com.antigravity
     depends_on:
       discovery-service:
         condition: service_healthy
       redis:
         condition: service_healthy
       mysql:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      apm-server:
+        condition: service_healthy
+      logstash:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:8084/actuator/health" ]
@@ -136,10 +203,21 @@ services:
       - DB_SOCIAL_URL=${DB_SOCIAL_URL}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_ROOT_PASSWORD}
+      - ELASTIC_APM_SERVICE_NAME=social-service
+      - ELASTIC_APM_SERVER_URL=${ELASTIC_APM_SERVER_URL}
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
+      - ELASTIC_APM_ENVIRONMENT=production
+      - ELASTIC_APM_APPLICATION_PACKAGES=com.antigravity
     depends_on:
       discovery-service:
         condition: service_healthy
       mysql:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+      apm-server:
+        condition: service_healthy
+      logstash:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:8086/actuator/health" ]
@@ -171,5 +249,90 @@ services:
       timeout: 5s
       retries: 5
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - xpack.security.enabled=true
+      - xpack.security.enrollment.enabled=true
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -s http://localhost:9200/_cluster/health -u elastic:${ELASTIC_PASSWORD} | grep -q '\"status\":\"yellow\"\\|\"status\":\"green\"'" ]
+      interval: 10s
+      timeout: 30s
+      retries: 24
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
+    environment:
+      - SERVERNAME=kibana
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+      - xpack.security.enabled=true
+    ports:
+      - "5601:5601"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -s -I http://localhost:5601 | grep -q \"HTTP/1.1 302 Found\"" ]
+      interval: 10s
+      timeout: 30s
+      retries: 24
+
+  apm-server:
+    image: docker.elastic.co/apm/apm-server:${ELASTIC_VERSION}
+    cap_add: [ "CHOWN", "DAC_OVERRIDE", "SETGID", "SETUID" ]
+    cap_drop: [ "ALL" ]
+    ports:
+      - "8200:8200"
+    command: >
+      apm-server -e
+        -E apm-server.rum.enabled=true
+        -E apm-server.rum.allow_origins=["*"]
+        -E apm-server.kibana.enabled=true
+        -E apm-server.kibana.host=kibana:5601
+        -E apm-server.kibana.username=elastic
+        -E apm-server.kibana.password=${ELASTIC_PASSWORD}
+        -E output.elasticsearch.hosts=["elasticsearch:9200"]
+        -E output.elasticsearch.username=elastic
+        -E output.elasticsearch.password=${ELASTIC_PASSWORD}
+        -E apm-server.auth.secret_token=${ELASTIC_APM_SECRET_TOKEN}
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      kibana:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8200/healthcheck" ]
+      interval: 10s
+      timeout: 30s
+      retries: 24
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:${ELASTIC_VERSION}
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "5044:5044"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
 volumes:
   mysql_data:
+  es_data:

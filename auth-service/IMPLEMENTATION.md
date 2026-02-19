@@ -10,6 +10,9 @@ The Auth Service manages user accounts, authentication, and security context.
 | `POST` | `/api/auth/login` | `AuthRequest` | Authenticates user and returns a JWT. |
 | `PUT` | `/api/users/{id}/location` | `lat`, `lng` (Query) | Updates user's home location and performs reverse geocoding. |
 | `GET` | `/api/users/{id}` | - | Retrieves user profile data. |
+| `GET` | `/api/users/search` | `query` | Searches for users by username, email, or mobile number. |
+| `GET` | `/api/users/{id}/preferences` | - | Retrieves user UI/Notification preferences. |
+| `PUT` | `/api/users/{id}/preferences` | `preferences` (Body) | Updates user UI/Notification preferences. |
 
 ## 2. Core Logic
 
@@ -18,9 +21,10 @@ The Auth Service manages user accounts, authentication, and security context.
 - **Automatic Geocoding**: If a user registers with coordinates but no address, the service automatically calls `OpenStreetMapService` to populate `village`, `taluk`, `district`, and `state`.
 - **Uniqueness**: Enforces unique `username` and `email`.
 
-### Security Implementation
+### Security & Preferences
 - **JWT Issuing**: Signs tokens using a private key.
 - **CustomUserDetailsService**: Integration with Spring Security for loading user entities.
+- **User Preferences**: Stores UI settings (theme, language) directly in the `User` entity using an `@ElementCollection` for high-performance access.
 
 ## 3. Flow: User Registration
 1. `AuthController` receives `RegisterRequest`.

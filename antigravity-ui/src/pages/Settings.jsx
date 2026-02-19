@@ -65,7 +65,7 @@ const Settings = () => {
                     <div className="glass-panel" style={{ padding: '1.5rem', borderRadius: '1rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                         <p><strong>Username:</strong> {user?.username}</p>
                         <p><strong>Email:</strong> {user?.email}</p>
-                        <p><strong>Location:</strong> {user?.location || 'Not set'}</p>
+                        <p><strong>Location:</strong> {user?.homeLocation ? `${user.homeLocation.latitude.toFixed(4)}, ${user.homeLocation.longitude.toFixed(4)}` : (user?.location || 'Not set')}</p>
                     </div>
                 </section>
             </div>

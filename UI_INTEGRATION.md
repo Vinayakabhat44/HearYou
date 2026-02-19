@@ -72,6 +72,13 @@ This document outlines the API endpoints, authentication data flow, and resource
 *   **Respond to Request:** `PUT /api/social/friends/{requestId}/respond?status=ACCEPTED`
     *   Status options: `ACCEPTED`, `REJECTED`
 
+### Group Management
+*   **Create Group:** `POST /api/social/groups`
+    *   **Body:** `{"name": "Local News Hub", "description": "Discuss local news", "createdBy": 101}`
+*   **Add Member:** `POST /api/social/groups/{groupId}/members`
+    *   **Body:** `{"userId": 102}`
+*   **List Groups:** `GET /api/social/groups/user/{userId}`
+
 ---
 
 ## 4. Content Feeds (`feed-service`)
@@ -90,6 +97,11 @@ This document outlines the API endpoints, authentication data flow, and resource
 *   **Get News:** `GET /api/news/local-feed`
 *   **Params (Optional):** `?pincode=560001&district=Bangalore`
     *   If params are omitted, logic currently defaults or requires implementation to fetch from user profile context if implicit.
+
+### News Sources
+*   **List Sources:** `GET /api/news/sources`
+*   **Add Source:** `POST /api/news/sources/bulk`
+    *   **Body:** `[{"name": "Local Times", "url": "https://example.com/rss", "region": "Bangalore"}]`
 
 ---
 

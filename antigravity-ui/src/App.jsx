@@ -1,5 +1,8 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import Settings from './pages/Settings'
+import './index.css'
+import './apm'
+import { ApmRoutes } from '@elastic/apm-rum-react'
+import { BrowserRouter as Router, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
@@ -8,8 +11,6 @@ import MainLayout from './layouts/MainLayout'
 import Stories from './pages/Stories'
 import Group from './pages/Group'
 import News from './pages/News'
-import Settings from './pages/Settings'
-import './index.css'
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useAuth();
@@ -28,7 +29,7 @@ function App() {
     <Router>
       <AuthProvider>
         <div className="app-container">
-          <Routes>
+          <ApmRoutes>
             <Route path="/" element={
               <PublicRoute>
                 <LandingPage />
@@ -68,7 +69,7 @@ function App() {
             } />
 
             <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          </ApmRoutes>
         </div>
       </AuthProvider>
     </Router>

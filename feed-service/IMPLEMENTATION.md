@@ -10,6 +10,7 @@ The Feed Service is the core logic engine for processing stories and generating 
 | `GET` | `/api/stories/{id}` | - | Retrieves details of a specific story. |
 | `DELETE` | `/api/stories/{id}` | - | Deletes a story (Authorized for creator only). |
 | `GET` | `/api/feed/hierarchical` | - | Returns a hierarchical feed based on user's location. |
+| `GET` | `/api/feed/friends` | - | Returns a feed containing stories only from current user's friends. |
 
 ## 2. Core Logic
 
@@ -24,6 +25,7 @@ To avoid expensive inter-service calls to the `Auth Service`, the user's locatio
 - **Cache Key**: `userLocation:{userId}`
 - **TTL**: Configured for efficient reuse across requests.
 - **Service**: `LocationCacheService.java`.
+- **Logic**: If a location is not in cache, the service calls `AuthServiceClient` to fetch and then populates the cache.
 
 ## 3. Spring AOP Concepts
 The Feed Service extensively uses AOP to keep business logic clean:
