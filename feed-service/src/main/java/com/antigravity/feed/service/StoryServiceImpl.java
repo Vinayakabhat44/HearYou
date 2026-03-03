@@ -40,9 +40,15 @@ public class StoryServiceImpl implements StoryService {
 
         // 1. Handle Media Upload
         if (file != null && !file.isEmpty()) {
-            String folder = story.getType().toString().toLowerCase() + "s";
+            Story.StoryType type = story.getType() != null ? story.getType() : Story.StoryType.STORY;
+            String folder = type.toString().toLowerCase() + "s";
             String fileUrl = mediaServiceClient.uploadFile(file, folder);
             story.setMediaUrl(fileUrl);
+            if (story.getType() == null) {
+                story.setType(type);
+            }
+        } else if (story.getType() == null) {
+            story.setType(Story.StoryType.STORY);
         }
 
         // 2. Handle Location
@@ -136,5 +142,11 @@ public class StoryServiceImpl implements StoryService {
         Story story = storyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Story not found"));
         storyRepository.delete(story);
+    }
+
+    @Override
+    public Long resolveUserIdByUsername(String username) {
+        UserLocationDTO user = authServiceClient.getUserByUsername(username);
+        return user != null ? user.getId() : null;
     }
 }

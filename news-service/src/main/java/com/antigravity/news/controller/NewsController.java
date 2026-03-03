@@ -17,7 +17,8 @@ public class NewsController {
             @RequestParam(required = false) String pincode,
             @RequestParam(required = false) String taluk,
             @RequestParam(required = false) String district,
-            @RequestParam(required = false) String state) {
+            @RequestParam(required = false) String state,
+            @RequestParam(required = false) String category) {
         return newsService.getLocalFeed(pincode, taluk, district, state);
     }
 }

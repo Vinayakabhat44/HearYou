@@ -38,6 +38,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             username = jwtUtil.extractUsername(jwt);
             userId = jwtUtil.extractUserId(jwt);
+            // System.out.println("Extracted userId from JWT: " + userId); // Temporary
+            // debug log
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 if (jwtUtil.validateToken(jwt)) {

@@ -20,13 +20,26 @@ public class FeedController {
 
     @GetMapping("/hierarchical")
     public ResponseEntity<List<Story>> getHierarchicalFeed(Authentication authentication) {
-        Long userId = Long.parseLong(authentication.getName());
+        Long userId = resolveUserId(authentication);
         return ResponseEntity.ok(storyService.getHierarchicalFeed(userId));
     }
 
     @GetMapping("/friends")
     public ResponseEntity<List<Story>> getFriendsFeed(Authentication authentication) {
-        Long userId = Long.parseLong(authentication.getName());
+        Long userId = resolveUserId(authentication);
         return ResponseEntity.ok(storyService.getFriendsFeed(userId));
+    }
+
+    private Long resolveUserId(Authentication authentication) {
+        if (authentication == null || authentication.getName() == null) {
+            return null;
+        }
+        String name = authentication.getName();
+        try {
+            return Long.parseLong(name);
+        } catch (NumberFormatException e) {
+            // Fallback for old tokens or usernames as subject
+            return storyService.resolveUserIdByUsername(name);
+        }
     }
 }

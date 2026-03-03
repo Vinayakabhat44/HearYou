@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import feedService from '../services/feedService';
 import TabScroll from '../components/TabScroll';
+import Button from '../components/Button';
+import CreateStoryModal from '../components/CreateStoryModal';
 import './Stories.css';
 
 const Stories = () => {
@@ -8,34 +10,61 @@ const Stories = () => {
     const [activeTab, setActiveTab] = useState('Local');
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const fetchFeed = async () => {
+        setLoading(true);
+        try {
+            let data;
+            if (activeTab === 'Friends') {
+                data = await feedService.getFriendsFeed();
+            } else {
+                data = await feedService.getHierarchicalFeed();
+            }
+            setItems(data || []);
+        } catch (err) {
+            console.error('Failed to fetch feed:', err);
+            setItems([]);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const fetchFeed = async () => {
-            setLoading(true);
-            try {
-                let data;
-                if (activeTab === 'Friends') {
-                    data = await feedService.getFriendsFeed();
-                } else {
-                    data = await feedService.getHierarchicalFeed();
-                }
-                setItems(data || []);
-            } catch (err) {
-                console.error('Failed to fetch feed:', err);
-                setItems([]);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchFeed();
     }, [activeTab]);
 
+    const handleCreateStory = async (storyData, file) => {
+        try {
+            await feedService.createStory(storyData, file);
+            // Refresh feed after creation
+            fetchFeed();
+        } catch (err) {
+            console.error('Failed to share story:', err);
+            alert('Failed to share story. Please try again.');
+        }
+    };
+
     return (
         <div className="stories-page">
-            <TabScroll
-                tabs={tabs}
-                activeTab={activeTab}
-                onTabChange={setActiveTab}
+            <div className="stories-header">
+                <TabScroll
+                    tabs={tabs}
+                    activeTab={activeTab}
+                    onTabChange={setActiveTab}
+                />
+                <Button
+                    className="new-story-btn"
+                    onClick={() => setIsModalOpen(true)}
+                >
+                    + New Story
+                </Button>
+            </div>
+
+            <CreateStoryModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onSubmit={handleCreateStory}
             />
 
             <div className="feed-container">

@@ -19,8 +19,22 @@ const News = () => {
             try {
                 // If 'Trending News' is selected, fetch the general feed (no category)
                 const categoryParam = activeTab === 'Trending News' ? null : activeTab.toLowerCase();
-                const data = await newsService.getLocalNews(categoryParam);
-                setNews(data || []);
+                const response = await newsService.getLocalNews(categoryParam);
+
+                // The backend LocalizedFeedResponse has a 'feed' object containing different lists
+                let newsData = [];
+                if (response && response.feed) {
+                    const tabKey = activeTab.toLowerCase();
+                    // Map tabs to backend feed fields
+                    if (tabKey === 'trending news') {
+                        newsData = response.feed.national || response.feed.state || [];
+                    } else if (response.feed[tabKey]) {
+                        newsData = response.feed[tabKey];
+                    } else if (response.feed.categories && response.feed.categories[tabKey]) {
+                        newsData = response.feed.categories[tabKey];
+                    }
+                }
+                setNews(newsData);
             } catch (err) {
                 console.error('Failed to fetch news:', err);
                 setNews([]);
@@ -51,11 +65,11 @@ const News = () => {
                         {news.map((item, index) => (
                             <div key={item.id || index} className="glass-panel news-card">
                                 <h3>{item.title}</h3>
-                                <p className="news-meta">{item.source} • {item.publishedDate || 'Today'}</p>
-                                <p className="news-summary">{item.summary || item.content}</p>
-                                {item.url && (
+                                <p className="news-meta">{item.source_id} • {item.pubDate || 'Today'}</p>
+                                <p className="news-summary">{item.description}</p>
+                                {item.link && (
                                     <a
-                                        href={item.url}
+                                        href={item.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="read-more-link"

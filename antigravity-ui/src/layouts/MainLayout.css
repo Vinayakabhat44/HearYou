@@ -106,6 +106,7 @@
 /* Center Content */
 .center-content {
     padding-bottom: 2rem;
+    min-width: 0;
 }
 
 /* Right Sidebar */

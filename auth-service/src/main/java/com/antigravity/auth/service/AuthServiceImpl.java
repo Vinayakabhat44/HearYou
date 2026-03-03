@@ -8,6 +8,7 @@ import com.antigravity.auth.entity.User;
 import java.util.Map;
 import java.util.HashMap;
 import com.antigravity.auth.repository.UserRepository;
+import com.antigravity.auth.security.CustomUserDetails;
 import com.antigravity.auth.security.JwtUtil;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
@@ -16,9 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -121,11 +127,11 @@ public class AuthServiceImpl implements AuthService {
         user = userRepository.save(user);
 
         // Generate JWT token
-        UserDetails userDetails = org.springframework.security.core.userdetails.User
-                .withUsername(user.getUsername())
-                .password(user.getPassword())
-                .authorities("ROLE_USER")
-                .build();
+        CustomUserDetails userDetails = new CustomUserDetails(
+                user.getId(),
+                user.getUsername(),
+                user.getPassword(),
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
 
         String token = jwtUtil.generateToken(userDetails);
 

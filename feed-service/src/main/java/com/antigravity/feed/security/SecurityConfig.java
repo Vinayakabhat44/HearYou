@@ -24,7 +24,7 @@ public class SecurityConfig {
                 http
                                 .csrf(csrf -> csrf.disable())
                                 .authorizeHttpRequests(auth -> auth
-                                                .requestMatchers("/api/feeds/**", "/v3/api-docs/**",
+                                                .requestMatchers("/api/feed/**", "/v3/api-docs/**",
                                                                 "/api/feed/v3/api-docs/**", "/swagger-ui/**",
                                                                 "/swagger-ui.html")
                                                 .permitAll() // Allow public access to

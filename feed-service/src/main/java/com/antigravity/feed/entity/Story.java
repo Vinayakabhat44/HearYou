@@ -26,6 +26,7 @@ public class Story {
     private String mediaUrl;
 
     @Lob
+    @JsonProperty("content")
     private String textContent;
 
     @Enumerated(EnumType.STRING)
@@ -59,6 +60,6 @@ public class Story {
     }
 
     public enum StoryType {
-        TEXT, AUDIO, VIDEO
+        TEXT, AUDIO, VIDEO, STORY, POST, ANNOUNCEMENT
     }
 }

@@ -23,7 +23,7 @@ public class StoryController {
             @RequestParam(required = false) Double lat,
             @RequestParam(required = false) Double lng,
             Authentication authentication) {
-        Long userId = Long.parseLong(authentication.getName());
+        Long userId = resolveUserId(authentication);
         return ResponseEntity.ok(storyService.createStory(story, lat, lng, userId, file));
     }
 
@@ -33,15 +33,28 @@ public class StoryController {
             @RequestParam(required = false) Double lat,
             @RequestParam(required = false) Double lng,
             Authentication authentication) {
-        Long userId = Long.parseLong(authentication.getName());
+        Long userId = resolveUserId(authentication);
         return ResponseEntity.ok(storyService.createStory(story, lat, lng, userId, null));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStory(@PathVariable Long id, Authentication authentication) {
-        Long userId = Long.parseLong(authentication.getName());
+        Long userId = resolveUserId(authentication);
         storyService.deleteStory(id, userId);
         return ResponseEntity.noContent().build();
+    }
+
+    private Long resolveUserId(Authentication authentication) {
+        if (authentication == null || authentication.getName() == null) {
+            return null;
+        }
+        String name = authentication.getName();
+        try {
+            return Long.parseLong(name);
+        } catch (NumberFormatException e) {
+            // Fallback for old tokens that have username as subject
+            return storyService.resolveUserIdByUsername(name);
+        }
     }
 
     @GetMapping("/{id}")

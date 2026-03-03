@@ -15,4 +15,6 @@ public interface StoryService {
     List<Story> getFriendsFeed(Long userId);
 
     void deleteStory(Long id, Long userId);
+
+    Long resolveUserIdByUsername(String username);
 }

@@ -11,4 +11,7 @@ public interface AuthServiceClient {
 
     @GetMapping("/api/users/{id}")
     UserLocationDTO getUser(@PathVariable("id") Long id);
+
+    @GetMapping("/api/users/username/{username}")
+    UserLocationDTO getUserByUsername(@PathVariable("username") String username);
 }

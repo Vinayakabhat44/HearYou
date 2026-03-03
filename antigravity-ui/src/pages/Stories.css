@@ -4,6 +4,19 @@
     gap: 1.5rem;
 }
 
+.stories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.new-story-btn {
+    white-space: nowrap;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+}
+
 .feed-item {
     padding: 1.5rem;
     border-radius: 1.5rem;

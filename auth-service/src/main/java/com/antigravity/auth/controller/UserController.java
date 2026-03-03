@@ -51,6 +51,12 @@ public class UserController {
         return ResponseEntity.ok(userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found")));
     }
 
+    @GetMapping("/username/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+        return ResponseEntity
+                .ok(userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found")));
+    }
+
     @GetMapping("/search")
     public ResponseEntity<List<User>> searchUsers(@RequestParam String query) {
         return ResponseEntity.ok(
