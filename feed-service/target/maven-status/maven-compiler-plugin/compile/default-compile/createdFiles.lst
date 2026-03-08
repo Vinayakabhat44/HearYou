@@ -27,6 +27,7 @@ com\antigravity\feed\dto\LocationData.class
 com\antigravity\feed\security\JwtAuthenticationFilter.class
 com\antigravity\feed\service\StoryService.class
 com\antigravity\feed\aop\RetryAspect.class
+com\antigravity\feed\client\SocialClient.class
 com\antigravity\feed\security\JwtUtil.class
 com\antigravity\feed\security\SecurityConfig.class
 com\antigravity\feed\aop\AuditAspect.class

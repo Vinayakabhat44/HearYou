@@ -20,6 +20,7 @@ D:\Vinayak\Personal_Project\Antigravity\feed-service\src\main\java\com\antigravi
 D:\Vinayak\Personal_Project\Antigravity\feed-service\src\main\java\com\antigravity\feed\config\FeignConfig.java
 D:\Vinayak\Personal_Project\Antigravity\feed-service\src\main\java\com\antigravity\feed\service\FeedService.java
 D:\Vinayak\Personal_Project\Antigravity\feed-service\src\main\java\com\antigravity\feed\annotation\AuditLog.java
+D:\Vinayak\Personal_Project\Antigravity\feed-service\src\main\java\com\antigravity\feed\client\SocialClient.java
 D:\Vinayak\Personal_Project\Antigravity\feed-service\src\main\java\com\antigravity\feed\service\GeocodingService.java
 D:\Vinayak\Personal_Project\Antigravity\feed-service\src\main\java\com\antigravity\feed\annotation\TrackTime.java
 D:\Vinayak\Personal_Project\Antigravity\feed-service\src\main\java\com\antigravity\feed\service\LocationCacheService.java
