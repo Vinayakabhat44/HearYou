@@ -1,0 +1,27 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    hostname: ${EUREKA_HOSTNAME:localhost}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: mitra-discovery-service
+    description: Eureka Discovery Server for MitraAI
+    version: 0.0.1

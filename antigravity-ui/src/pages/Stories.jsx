@@ -82,7 +82,31 @@ const Stories = () => {
                             </div>
                             <div className="item-content">
                                 <p>{item.content || item.summary}</p>
-                                {item.mediaUrl && <img src={item.mediaUrl} alt="post" style={{ width: '100%', borderRadius: '1rem', marginTop: '1rem' }} />}
+                                {item.mediaUrl && (
+                                    (() => {
+                                        const isVideo = (url) => {
+                                            const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov'];
+                                            return videoExtensions.some(ext => url.toLowerCase().endsWith(ext));
+                                        };
+
+                                        if (isVideo(item.mediaUrl)) {
+                                            return (
+                                                <video
+                                                    src={item.mediaUrl}
+                                                    controls
+                                                    style={{ width: '100%', borderRadius: '1rem', marginTop: '1rem' }}
+                                                />
+                                            );
+                                        }
+                                        return (
+                                            <img
+                                                src={item.mediaUrl}
+                                                alt="post"
+                                                style={{ width: '100%', borderRadius: '1rem', marginTop: '1rem' }}
+                                            />
+                                        );
+                                    })()
+                                )}
                             </div>
                             <div className="item-actions">
                                 <button className="action-btn">Like</button>

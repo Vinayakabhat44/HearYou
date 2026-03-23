@@ -34,6 +34,11 @@ const updateLocation = async (userId, lat, lng) => {
     return response.data;
 };
 
+const reverseGeocode = async (lat, lng) => {
+    const response = await axios.get(`${USER_REF}/location/reverse?lat=${lat}&lng=${lng}`);
+    return response.data;
+};
+
 const updatePreferences = async (userId, preferences) => {
     const user = getCurrentUser();
     const response = await axios.put(`${USER_REF}/${userId}/preferences`, preferences, {
@@ -49,5 +54,6 @@ export default {
     getCurrentUser,
     getUserProfile,
     updateLocation,
+    reverseGeocode,
     updatePreferences
 };

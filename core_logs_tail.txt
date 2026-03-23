@@ -1,0 +1,50 @@
+﻿2026-03-21T10:57:05.079Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-03-21T10:57:05.082Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-03-21T10:57:05.086Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-03-21T10:57:05.090Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-03-21T10:57:05.093Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-03-21T10:57:05.105Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-03-21T10:57:05.106Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@274cec41]
+2026-03-21T10:57:05.109Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-21T10:57:15.242Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-03-21T10:57:15.243Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-03-21T10:57:15.246Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-03-21T10:57:15.247Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-03-21T10:57:15.248Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-03-21T10:57:15.257Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-03-21T10:57:15.258Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@745a7ea6]
+2026-03-21T10:57:15.261Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-21 10:57:15,811 [elastic-apm-server-reporter] WARN  co.elastic.apm.agent.report.AbstractIntakeApiHandler - Response body: null
+2026-03-21 10:57:15,812 [elastic-apm-server-reporter] INFO  co.elastic.apm.agent.report.AbstractIntakeApiHandler - Backing off for 16 seconds (+/-10%)
+2026-03-21T10:57:25.354Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-03-21T10:57:25.355Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-03-21T10:57:25.357Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-03-21T10:57:25.357Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-03-21T10:57:25.359Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-03-21T10:57:25.366Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-03-21T10:57:25.366Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@438604ef]
+2026-03-21T10:57:25.369Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-21T10:57:29.320Z DEBUG 1 --- [mitra-core-service] [freshExecutor-0] o.s.web.client.RestTemplate              : HTTP GET http://mitra-discovery-service:8761/eureka/apps/delta
+2026-03-21T10:57:29.322Z DEBUG 1 --- [mitra-core-service] [freshExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/xml, text/xml, application/*+json, application/*+xml]
+2026-03-21T10:57:29.330Z DEBUG 1 --- [mitra-core-service] [freshExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2026-03-21T10:57:29.331Z DEBUG 1 --- [mitra-core-service] [freshExecutor-0] o.s.web.client.RestTemplate              : Reading to [org.springframework.cloud.netflix.eureka.http.EurekaApplications]
+2026-03-21T10:57:29.348Z DEBUG 1 --- [mitra-core-service] [tbeatExecutor-0] o.s.web.client.RestTemplate              : HTTP PUT http://mitra-discovery-service:8761/eureka/apps/MITRA-CORE-SERVICE/0699be9c4d46:mitra-core-service:8082?status=UP&lastDirtyTimestamp=1774090559264
+2026-03-21T10:57:29.350Z DEBUG 1 --- [mitra-core-service] [tbeatExecutor-0] o.s.web.client.RestTemplate              : Accept=[application/json, application/xml, text/xml, application/*+json, application/*+xml]
+2026-03-21T10:57:29.358Z DEBUG 1 --- [mitra-core-service] [tbeatExecutor-0] o.s.web.client.RestTemplate              : Response 200 OK
+2026-03-21 10:57:31,221 [elastic-apm-server-reporter] ERROR co.elastic.apm.agent.report.AbstractIntakeApiHandler - Error sending data to APM server: Read timed out, response code is -1
+2026-03-21T10:57:35.444Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-03-21T10:57:35.446Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-03-21T10:57:35.448Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-03-21T10:57:35.448Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-03-21T10:57:35.449Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-03-21T10:57:35.458Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-03-21T10:57:35.458Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@4319b207]
+2026-03-21T10:57:35.461Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-03-21T10:57:45.594Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /actuator/health
+2026-03-21T10:57:45.596Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-03-21T10:57:45.597Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /actuator/health
+2026-03-21T10:57:45.598Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/actuator/health", parameters={}
+2026-03-21T10:57:45.601Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2026-03-21T10:57:45.611Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/vnd.spring-boot.actuator.v3+json', given [*/*] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2026-03-21T10:57:45.612Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [org.springframework.boot.actuate.health.SystemHealth@3142095c]
+2026-03-21T10:57:45.615Z DEBUG 1 --- [mitra-core-service] [nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

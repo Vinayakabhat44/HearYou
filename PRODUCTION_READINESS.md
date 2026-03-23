@@ -1,44 +1,49 @@
-# Production Readiness Report: Antigravity
+# Production Readiness Report: MitraAI
 
 **Date:** 2026-03-08
 **Status:** Pre-Production / Staging Ready
 
-This report evaluates the current state of the Antigravity microservices project, highlighting recent improvements and outlining the remaining steps for a production launch.
+---
 
 ## 1. Executive Summary
 
-The project has achieved significant stability with the recent **Docker standardization** (all services on `eclipse-temurin:17-jre-alpine`) and the implementation of **User Preferences** within the Auth Service. core services are containerized and orchestrated via Docker Compose. However, critical areas regarding **secrets management** remain to be addressed for a full production release.
+MitraAI has been **consolidated from 6 microservices to a 2-service macroservice architecture** (`mitra-auth-service` + `mitra-core-service`), significantly reducing operational complexity. All services are containerized with multi-stage Docker builds and orchestrated via Docker Compose with health checks. The Elastic Stack is integrated for centralized logging and APM distributed tracing.
 
 ---
 
-## 2. Recent Improvements
+## 2. Recent Changes
 
-### ✅ Docker Standardization
-- **Feature:** Aligned all microservices to use `eclipse-temurin:17-jre-alpine` as the base image.
-- **Impact:** Reduced image size, improved security patching, and ensured consistent runtime environments across `social-service`, `auth-service`, `feed-service`, and others.
-- **Status:** **Completed & Verified**.
+### ✅ Service Consolidation
+- Merged `feed-service`, `social-service`, `news-service`, `media-service` → **`mitra-core-service`**
+- Single deployable JAR with domain-separated internal packages
+- Eliminated 4+ duplicate security/config/client classes
 
-### ✅ User Preferences Module
-- **Feature:** Integrated User Preferences storage directly into `auth-service`.
-- **Impact:** Users can now store and retrieve settings (e.g., theme, language, notifications) via `PUT /api/users/{id}/preferences`.
-- **Design:** Implemented as an `@ElementCollection` in the `User` entity to keep architecture simple without adding a new microservice overhead.
-- **Status:** **Completed & Verified**.
+### ✅ Project Rename: Antigravity → MitraAI
+- All Java packages updated: `com.antigravity` → `com.mitraai`
+- Docker Compose project name: `mitra-ai`
+- Database schemas: `mitra_auth`, `mitra_core`
 
-### ✅ Observability & Centralized Logging
-- **Feature:** Integrated Production-Grade Elastic Stack (ELK + APM).
-- **Impact:** Enabled comprehensive centralized logging via Logstash and distributed tracing via Elastic APM across all microservices in standard Docker Compose environment.
-- **Status:** **Completed & Verified**.
+### ✅ Docker Build Hardening
+- Fixed Dockerfile paths to match new `mitra-` prefixed directories
+- Switched to `-Dmaven.test.skip=true` for faster, safer image builds
+- Added `spring-security-test` dependency to prevent compile-time failures
+
+### ✅ Observability
+- Elastic APM + Logstash integrated across all services
+- Kibana at port 5601 for log analysis and distributed tracing
 
 ---
 
 ## 3. Architecture & Infrastructure
 
-| Component | Status | Analysis |
+| Component | Status | Notes |
 | :--- | :--- | :--- |
-| **Containerization** | 🟢 Ready | All services Dockerized with optimized multi-stage builds. |
-| **Orchestration** | 🟡 Partial | `docker-compose` is excellent for dev/staging. **Recommendation:** Move to Kubernetes (K8s) or ECS for production auto-scaling. |
-| **Service Discovery** | 🟢 Ready | Netflix Eureka is stable; services register and discover dynamically. |
-| **API Gateway** | 🟢 Ready | Spring Cloud Gateway is effectively routing requests. |
+| **Containerization** | 🟢 Ready | Multi-stage builds, `eclipse-temurin:17-jre-alpine` |
+| **Orchestration** | 🟡 Staging | Docker Compose. Recommend K8s/ECS for production. |
+| **Service Discovery** | 🟢 Ready | Netflix Eureka (`mitra-discovery-service`) |
+| **API Gateway** | 🟢 Ready | Spring Cloud Gateway routing to 2 core services |
+| **Databases** | 🟢 Ready | Separate schemas: `mitra_auth`, `mitra_core` |
+| **Redis Cache** | 🟢 Ready | User location caching, news caching |
 
 ---
 
@@ -46,29 +51,33 @@ The project has achieved significant stability with the recent **Docker standard
 
 | Category | Status | Details |
 | :--- | :--- | :--- |
-| **Authentication** | 🟢 Ready | RS256 JWT implementation is secure and stateless. |
-| **Secrets Management** | 🔴 Critical | Secrets are currently in `.env` files. **Action:** Migrate to AWS Secrets Manager, HashiCorp Vault, or K8s Secrets. |
-| **Network Policy** | 🟡 Partial | Internal Docker network is used. **Recommendation:** Implement mTLS for zero-trust inter-service communication. |
+| **Authentication** | 🟢 Ready | RS256 JWT — stateless, asymmetric |
+| **Secrets Management** | 🔴 Critical | Secrets in `.env`. Migrate to AWS Secrets Manager / Vault. |
+| **Network Policy** | 🟡 Partial | Docker internal network. Add mTLS for zero-trust. |
+| **Password Hashing** | 🟢 Ready | Argon2id via BouncyCastle |
 
 ---
 
 ## 5. Resilience & Observability
 
-| Area | Status | Recommendation |
+| Area | Status | Notes |
 | :--- | :--- | :--- |
-| **Health Checks** | 🟢 Ready | Actuator `/health` endpoints are live and integrated with Docker healthchecks. |
-| **Logging** | 🟢 Ready | Centralized ELK Stack (7.x/8.x) integrated for all services with logstash ingestion. |
-| **Observability** | 🟢 Ready | Elastic APM Server & RUM agent integrated for distributed tracing. |
-| **Database Migrations** | 🟠 Needs Work | Reliance on `hibernate.ddl-auto` is risky. **Action:** Integrate Flyway for versioned schema control. |
+| **Health Checks** | 🟢 Ready | `/actuator/health` with Docker healthcheck integration |
+| **Centralized Logging** | 🟢 Ready | Logstash → Elasticsearch → Kibana |
+| **APM Tracing** | 🟢 Ready | Elastic APM agent on all services |
+| **Database Migrations** | 🟠 Needs Work | `hibernate.ddl-auto=update`. Integrate **Flyway**. |
+| **Rate Limiting** | 🔴 Missing | No gateway-level rate limiting yet |
 
 ---
 
-## 6. Roadmap directly to Production
+## 6. Production Roadmap
 
-### Immediate Next Steps (Priority 1)
-1.  **Secret Rotation:** Move database passwords and JWT keys out of Git/Environment files.
-2.  **Database Migration:** Initialize Flyway for `auth-service` and `feed-service`.
+### Priority 1 (Before Launch)
+1. **Secrets Rotation**: Move DB passwords + JWT keys to a secrets manager.
+2. **Flyway Migrations**: Replace `ddl-auto=update` with versioned schema control.
+3. **Rate Limiting**: Add Spring Cloud Gateway `RequestRateLimiter` filter.
 
-### Post-Launch (Priority 2)
-1.  **Kubernetes Migration:** Create Helm charts for deployment.
-2.  **Distributed Tracing:** Add Micrometer Tracing/Zipkin to visualize request latency bottleneck.
+### Priority 2 (Post-Launch)
+1. **Kubernetes**: Create Helm charts for `mitra-auth-service` and `mitra-core-service`.
+2. **Horizontal Scaling**: `mitra-core-service` is stateless and ready to scale horizontally.
+3. **Circuit Breaker**: Add Resilience4j for Feign client fault tolerance.

@@ -1,0 +1,21 @@
+﻿id	category	country	state	district
+1	Cricket	India	NULL	NULL
+2	Cricket	India	NULL	NULL
+3	Brazil	India	NULL	NULL
+4	Africa	India	NULL	NULL
+5	Finance	India	NULL	NULL
+6	Cricket	India	NULL	NULL
+7	International	International	NULL	NULL
+8	Canada	India	NULL	NULL
+9	Cuba	India	NULL	NULL
+10	Colombia	India	NULL	NULL
+11	International	International	NULL	NULL
+12	International	International	NULL	NULL
+13	International	International	NULL	NULL
+14	Oil	India	NULL	NULL
+15	New Zealand	India	NULL	NULL
+16	Australia news	India	NULL	NULL
+17	South Australia	India	NULL	NULL
+18	Finance	India	NULL	NULL
+19	Tropical Cyclone Narelle	India	NULL	NULL
+20	Australian Competition and Consumer Commission (ACCC)	India	NULL	NULL

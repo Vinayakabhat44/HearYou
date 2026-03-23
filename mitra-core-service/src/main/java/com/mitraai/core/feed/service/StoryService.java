@@ -1,0 +1,20 @@
+package com.mitraai.core.feed.service;
+
+import com.mitraai.core.feed.entity.Story;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
+public interface StoryService {
+    Story createStory(Story story, Double lat, Double lng, Long userId, MultipartFile file);
+
+    Story getStory(Long id);
+
+    List<Story> getHierarchicalFeed(Long userId);
+
+    List<Story> getFriendsFeed(Long userId);
+
+    void deleteStory(Long id, Long userId);
+
+    Long resolveUserIdByUsername(String username);
+}

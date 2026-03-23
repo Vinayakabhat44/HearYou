@@ -1,0 +1,163 @@
+﻿mitra-auth-service-1  | 2026-03-08 15:17:33,123 [main] INFO  co.elastic.apm.agent.util.JmxUtils - Found JVM-specific OperatingSystemMXBean interface: com.sun.management.OperatingSystemMXBean
+mitra-auth-service-1  | 2026-03-08 15:17:33,252 [main] INFO  co.elastic.apm.agent.util.JmxUtils - Found JVM-specific ThreadMXBean interface: com.sun.management.ThreadMXBean
+mitra-auth-service-1  | 2026-03-08 15:17:33,295 [main] INFO  co.elastic.apm.agent.configuration.StartupInfo - Starting Elastic APM 1.45.0 as mitra-auth-service (0.0.1-SNAPSHOT) on Java 17.0.18 Runtime version: 17.0.18+8 VM version: 17.0.18+8 (Eclipse Adoptium) Linux 6.6.87.2-microsoft-standard-WSL2
+mitra-auth-service-1  | 2026-03-08 15:17:33,298 [main] INFO  co.elastic.apm.agent.configuration.StartupInfo - service_name: 'mitra-auth-service' (source: Environment Variables)
+mitra-auth-service-1  | 2026-03-08 15:17:33,298 [main] INFO  co.elastic.apm.agent.configuration.StartupInfo - environment: 'production' (source: Environment Variables)
+mitra-auth-service-1  | 2026-03-08 15:17:33,303 [main] INFO  co.elastic.apm.agent.configuration.StartupInfo - secret_token: 'XXXX' (source: Environment Variables)
+mitra-auth-service-1  | 2026-03-08 15:17:33,304 [main] INFO  co.elastic.apm.agent.configuration.StartupInfo - server_url: 'http://apm-server:8200' (source: Environment Variables)
+mitra-auth-service-1  | 2026-03-08 15:17:33,305 [main] INFO  co.elastic.apm.agent.configuration.StartupInfo - application_packages: 'com.mitraai' (source: Environment Variables)
+mitra-auth-service-1  | 2026-03-08 15:17:39,505 [main] INFO  co.elastic.apm.agent.impl.ElasticApmTracer - Tracer switched to RUNNING state
+mitra-auth-service-1  | 2026-03-08 15:17:39,558 [elastic-apm-server-healthcheck] INFO  co.elastic.apm.agent.report.ApmServerHealthChecker - Elastic APM server is available: {  "build_date": "2024-01-09T16:06:45Z",  "build_sha": "3e0d0cc3ab30586076aca0eda6beeb71f4c1906d",  "publish_ready": false,  "version": "8.12.0"}
+mitra-auth-service-1  | 2026-03-08 15:17:39,617 [elastic-apm-remote-config-poller] ERROR co.elastic.apm.agent.configuration.ApmServerConfigurationSource - Remote configuration is not available. Check the connection between APM Server and Kibana.
+mitra-auth-service-1  | 
+mitra-auth-service-1  |   .   ____          _            __ _ _
+mitra-auth-service-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+mitra-auth-service-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+mitra-auth-service-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+mitra-auth-service-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+mitra-auth-service-1  |  =========|_|==============|___/=/_/_/_/
+mitra-auth-service-1  |  :: Spring Boot ::                (v3.2.2)
+mitra-auth-service-1  | 
+mitra-auth-service-1  | 2026-03-08T15:17:53.542Z  INFO 1 --- [mitra-auth-service] [           main] c.mitraai.auth.AuthServiceApplication    : Starting AuthServiceApplication v0.0.1-SNAPSHOT using Java 17.0.18 with PID 1 (/app/app.jar started by root in /app)
+mitra-auth-service-1  | 2026-03-08T15:17:53.580Z  INFO 1 --- [mitra-auth-service] [           main] c.mitraai.auth.AuthServiceApplication    : No active profile set, falling back to 1 default profile: "default"
+mitra-auth-service-1  | 2026-03-08T15:18:07.461Z  INFO 1 --- [mitra-auth-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+mitra-auth-service-1  | 2026-03-08T15:18:08.454Z  INFO 1 --- [mitra-auth-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 881 ms. Found 1 JPA repository interface.
+mitra-auth-service-1  | 2026-03-08T15:18:11.245Z  INFO 1 --- [mitra-auth-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b07a565c-648e-39c6-829f-3e3e5370d270
+mitra-auth-service-1  | 2026-03-08T15:18:17.138Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$LoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$LoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+mitra-auth-service-1  | 2026-03-08T15:18:17.216Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.loadbalancer.config.BlockingLoadBalancerClientAutoConfiguration' of type [org.springframework.cloud.loadbalancer.config.BlockingLoadBalancerClientAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.258Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.loadbalancer.config.LoadBalancerAutoConfiguration' of type [org.springframework.cloud.loadbalancer.config.LoadBalancerAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.369Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.commons.config.CommonsConfigAutoConfiguration' of type [org.springframework.cloud.commons.config.CommonsConfigAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.405Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.430Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'loadBalancerClientsDefaultsMappingsProvider' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration$$Lambda$770/0x000073e77e766dd8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.484Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultsBindHandlerAdvisor' of type [org.springframework.cloud.commons.config.DefaultsBindHandlerAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.711Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.cloud.loadbalancer-org.springframework.cloud.client.loadbalancer.LoadBalancerClientsProperties' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerClientsProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.920Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'default.org.springframework.cloud.loadbalancer.config.LoadBalancerAutoConfiguration.LoadBalancerClientSpecification' of type [org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientSpecification] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.950Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'default.org.springframework.cloud.loadbalancer.config.BlockingLoadBalancerClientAutoConfiguration.LoadBalancerClientSpecification' of type [org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientSpecification] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:17.976Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'default.org.springframework.cloud.netflix.eureka.loadbalancer.LoadBalancerEurekaAutoConfiguration.LoadBalancerClientSpecification' of type [org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientSpecification] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:18.016Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'loadBalancerClientFactory' of type [org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:18.140Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'blockingLoadBalancerClient' of type [org.springframework.cloud.loadbalancer.blocking.client.BlockingLoadBalancerClient] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:18.239Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'loadBalancerServiceInstanceCookieTransformer' of type [org.springframework.cloud.loadbalancer.core.LoadBalancerServiceInstanceCookieTransformer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:18.253Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'xForwarderHeadersTransformer' of type [org.springframework.cloud.loadbalancer.blocking.XForwardedHeadersTransformer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:18.267Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:18.288Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'loadBalancerRequestFactory' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerRequestFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:18.307Z  WARN 1 --- [mitra-auth-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'loadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+mitra-auth-service-1  | 2026-03-08T15:18:21.192Z  INFO 1 --- [mitra-auth-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+mitra-auth-service-1  | 2026-03-08T15:18:21.352Z  INFO 1 --- [mitra-auth-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+mitra-auth-service-1  | 2026-03-08T15:18:21.364Z  INFO 1 --- [mitra-auth-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+mitra-auth-service-1  | 2026-03-08T15:18:22.081Z  INFO 1 --- [mitra-auth-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+mitra-auth-service-1  | 2026-03-08T15:18:22.108Z  INFO 1 --- [mitra-auth-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 28101 ms
+mitra-auth-service-1  | 2026-03-08T15:18:27.666Z ERROR 1 --- [mitra-auth-service] [           main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter': Unsatisfied dependency expressed through field 'jwtUtil': Error creating bean with name 'jwtUtil': Invocation of init method failed
+mitra-auth-service-1  | 2026-03-08T15:18:28.550Z  INFO 1 --- [mitra-auth-service] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+mitra-auth-service-1  | 2026-03-08T15:18:28.895Z  WARN 1 --- [mitra-auth-service] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+mitra-auth-service-1  | 2026-03-08T15:18:29.051Z  INFO 1 --- [mitra-auth-service] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+mitra-auth-service-1  | 
+mitra-auth-service-1  | Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+mitra-auth-service-1  | 2026-03-08T15:18:29.392Z ERROR 1 --- [mitra-auth-service] [           main] o.s.boot.SpringApplication               : Application run failed
+mitra-auth-service-1  | 
+mitra-auth-service-1  | org.springframework.context.ApplicationContextException: Unable to start web server
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:165)
+mitra-auth-service-1  | 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:618)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+mitra-auth-service-1  | 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+mitra-auth-service-1  | 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+mitra-auth-service-1  | 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+mitra-auth-service-1  | 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+mitra-auth-service-1  | 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+mitra-auth-service-1  | 	at com.mitraai.auth.AuthServiceApplication.main(AuthServiceApplication.java:10)
+mitra-auth-service-1  | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+mitra-auth-service-1  | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+mitra-auth-service-1  | 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+mitra-auth-service-1  | 	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+mitra-auth-service-1  | 	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:91)
+mitra-auth-service-1  | 	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:53)
+mitra-auth-service-1  | 	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:58)
+mitra-auth-service-1  | Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+mitra-auth-service-1  | 	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:145)
+mitra-auth-service-1  | 	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:105)
+mitra-auth-service-1  | 	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:499)
+mitra-auth-service-1  | 	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:218)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+mitra-auth-service-1  | 	... 15 common frames omitted
+mitra-auth-service-1  | Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter': Unsatisfied dependency expressed through field 'jwtUtil': Error creating bean with name 'jwtUtil': Invocation of init method failed
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1418)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:210)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:173)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:168)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:153)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+mitra-auth-service-1  | 	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+mitra-auth-service-1  | 	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+mitra-auth-service-1  | 	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4866)
+mitra-auth-service-1  | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+mitra-auth-service-1  | 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+mitra-auth-service-1  | 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+mitra-auth-service-1  | 	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+mitra-auth-service-1  | 	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+mitra-auth-service-1  | 	at java.base/java.util.concurrent.AbstractExecutorService.submit(Unknown Source)
+mitra-auth-service-1  | 	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+mitra-auth-service-1  | 	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:845)
+mitra-auth-service-1  | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+mitra-auth-service-1  | 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+mitra-auth-service-1  | 	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+mitra-auth-service-1  | 	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+mitra-auth-service-1  | 	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+mitra-auth-service-1  | 	at java.base/java.util.concurrent.AbstractExecutorService.submit(Unknown Source)
+mitra-auth-service-1  | 	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+mitra-auth-service-1  | 	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:240)
+mitra-auth-service-1  | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+mitra-auth-service-1  | 	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:433)
+mitra-auth-service-1  | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+mitra-auth-service-1  | 	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:917)
+mitra-auth-service-1  | 	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+mitra-auth-service-1  | 	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:488)
+mitra-auth-service-1  | 	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:126)
+mitra-auth-service-1  | 	... 20 common frames omitted
+mitra-auth-service-1  | Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtUtil': Invocation of init method failed
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:222)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:421)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1765)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
+mitra-auth-service-1  | 	... 62 common frames omitted
+mitra-auth-service-1  | Caused by: java.io.IOException: keystore password was incorrect
+mitra-auth-service-1  | 	at java.base/sun.security.pkcs12.PKCS12KeyStore.engineLoad(Unknown Source)
+mitra-auth-service-1  | 	at java.base/sun.security.util.KeyStoreDelegator.engineLoad(Unknown Source)
+mitra-auth-service-1  | 	at java.base/java.security.KeyStore.load(Unknown Source)
+mitra-auth-service-1  | 	at com.mitraai.auth.security.JwtUtil.init(JwtUtil.java:42)
+mitra-auth-service-1  | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+mitra-auth-service-1  | 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+mitra-auth-service-1  | 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+mitra-auth-service-1  | 	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:457)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:401)
+mitra-auth-service-1  | 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:219)
+mitra-auth-service-1  | 	... 74 common frames omitted
+mitra-auth-service-1  | Caused by: java.security.UnrecoverableKeyException: failed to decrypt safe contents entry: javax.crypto.BadPaddingException: Given final block not properly padded. Such issues can arise if a bad key is used during decryption.
+mitra-auth-service-1  | 	... 85 common frames omitted
+mitra-auth-service-1  | 
+mitra-auth-service-1  | 2026-03-08 15:18:29,467 [elastic-apm-init-instrumentation-shutdown-hook] INFO  co.elastic.apm.agent.bci.InstrumentationStatsLifecycleListener - Used instrumentation groups: [exception-handler, executor, executor-collection, fork-join, log-correlation, log-error, log-reformatting, logging, micrometer, process, reactor, servlet-api, spring-mvc, spring-service-name, ssl-context, urlconnection]
+mitra-auth-service-1  | 2026-03-08 15:18:29,478 [elastic-apm-circuit-breaker] INFO  co.elastic.apm.agent.impl.circuitbreaker.CircuitBreaker - Stopping the Circuit Breaker thread.
+mitra-auth-service-1  | 2026-03-08 15:18:30,510 [elastic-apm-init-instrumentation-shutdown-hook] INFO  co.elastic.apm.agent.impl.ElasticApmTracer - Tracer switched to STOPPED state
+mitra-auth-service-1  | 2026-03-08 15:18:30,511 [elastic-apm-init-instrumentation-shutdown-hook] INFO  co.elastic.apm.agent.report.ApmServerReporter - dropped events because of full queue: 0
+mitra-auth-service-1  | 2026-03-08 15:18:30,534 [elastic-apm-init-instrumentation-shutdown-hook] INFO  co.elastic.apm.agent.report.IntakeV2ReportingEventHandler - Reported events: 22
+mitra-auth-service-1  | 2026-03-08 15:18:30,535 [elastic-apm-init-instrumentation-shutdown-hook] INFO  co.elastic.apm.agent.report.IntakeV2ReportingEventHandler - Dropped events: 0

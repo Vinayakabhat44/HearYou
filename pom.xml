@@ -10,12 +10,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.antigravity</groupId>
-	<artifactId>antigravity-parent</artifactId>
+	<groupId>com.mitraai</groupId>
+	<artifactId>mitra-ai-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Antigravity Parent</name>
-	<description>Parent project for Antigravity microservices</description>
+	<name>MitraAI Parent</name>
+	<description>Parent project for MitraAI macroservices</description>
 	
 	<properties>
 		<java.version>17</java.version>
@@ -23,12 +23,10 @@
 	</properties>
 	
 	<modules>
-		<module>auth-service</module>
-		<module>feed-service</module>
-		<module>discovery-service</module>
-		<module>gateway-service</module>
-		<module>media-service</module>
-		<module>news-service</module>
+		<module>mitra-auth-service</module>
+		<module>mitra-core-service</module>
+		<module>mitra-discovery-service</module>
+		<module>mitra-gateway-service</module>
 	</modules>
 	
 	<dependencyManagement>

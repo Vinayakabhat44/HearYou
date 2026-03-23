@@ -28,6 +28,10 @@ const News = () => {
                     // Map tabs to backend feed fields
                     if (tabKey === 'trending news') {
                         newsData = response.feed.national || response.feed.state || [];
+                    } else if (tabKey === 'nation') {
+                        newsData = response.feed.national || [];
+                    } else if (tabKey === 'local') {
+                        newsData = response.feed.pincode || [];
                     } else if (response.feed[tabKey]) {
                         newsData = response.feed[tabKey];
                     } else if (response.feed.categories && response.feed.categories[tabKey]) {

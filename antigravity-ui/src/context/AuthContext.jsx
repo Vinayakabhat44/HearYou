@@ -24,7 +24,12 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (userData) => {
-        return await authService.register(userData);
+        const data = await authService.register(userData);
+        if (data.token) {
+            setUser(data);
+            localStorage.setItem('user', JSON.stringify(data));
+        }
+        return data;
     };
 
     const logout = () => {
@@ -37,7 +42,8 @@ export const AuthProvider = ({ children }) => {
         loading,
         login,
         register,
-        logout
+        logout,
+        reverseGeocode: authService.reverseGeocode
     };
 
     return (

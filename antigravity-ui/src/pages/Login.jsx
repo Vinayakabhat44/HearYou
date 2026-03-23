@@ -38,9 +38,9 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit}>
                     <Input
-                        label="Username"
+                        label="Username or Mobile Number"
                         name="username"
-                        placeholder="Enter your username"
+                        placeholder="Enter username or mobile"
                         value={formData.username}
                         onChange={handleChange}
                         required

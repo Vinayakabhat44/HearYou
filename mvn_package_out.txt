@@ -1,0 +1,47 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.mitraai:mitra-core-service >-------------------
+[INFO] Building Mitra Core Service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ mitra-core-service ---
+[INFO] Deleting D:\Vinayak\Personal_Project\Antigravity\mitra-core-service\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ mitra-core-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ mitra-core-service ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 67 source files with javac [debug release 17] to target\classes
+[INFO] /D:/Vinayak/Personal_Project/Antigravity/mitra-core-service/src/main/java/com/mitraai/core/news/adapter/impl/RssIngestionAdapter.java: D:\Vinayak\Personal_Project\Antigravity\mitra-core-service\src\main\java\com\mitraai\core\news\adapter\impl\RssIngestionAdapter.java uses or overrides a deprecated API.
+[INFO] /D:/Vinayak/Personal_Project/Antigravity/mitra-core-service/src/main/java/com/mitraai/core/news/adapter/impl/RssIngestionAdapter.java: Recompile with -Xlint:deprecation for details.
+[INFO] /D:/Vinayak/Personal_Project/Antigravity/mitra-core-service/src/main/java/com/mitraai/core/feed/service/OpenStreetMapService.java: D:\Vinayak\Personal_Project\Antigravity\mitra-core-service\src\main\java\com\mitraai\core\feed\service\OpenStreetMapService.java uses unchecked or unsafe operations.
+[INFO] /D:/Vinayak/Personal_Project/Antigravity/mitra-core-service/src/main/java/com/mitraai/core/feed/service/OpenStreetMapService.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /D:/Vinayak/Personal_Project/Antigravity/mitra-core-service/src/main/java/com/mitraai/core/news/service/NewsService.java:[85,42] cannot find symbol
+  symbol:   method findByDistrictOrderByIngestedAtDesc(java.lang.String)
+  location: variable articleRepository of type com.mitraai.core.news.repository.NewsArticleRepository
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.472 s
+[INFO] Finished at: 2026-03-21T16:21:17+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project mitra-core-service: Compilation failure
+[ERROR] /D:/Vinayak/Personal_Project/Antigravity/mitra-core-service/src/main/java/com/mitraai/core/news/service/NewsService.java:[85,42] cannot find symbol
+[ERROR]   symbol:   method findByDistrictOrderByIngestedAtDesc(java.lang.String)
+[ERROR]   location: variable articleRepository of type com.mitraai.core.news.repository.NewsArticleRepository
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

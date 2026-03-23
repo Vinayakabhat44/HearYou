@@ -1,56 +1,80 @@
-# Walkthrough: Request Flow Explanation
+# MitraAI — Architecture Walkthrough
 
-I have researched the architectural flow for `GET /api/feed/hierarchical` and updated the `implementation_plan.md` accordingly.
+## 1. Macroservice Architecture
 
-## 1. Updated Architecture Diagram
-The diagram now explicitly shows the **API Gateway** and **Discovery Service (Eureka)**, as well as the interaction between services regarding JWT validation.
+MitraAI consolidates four previously separate microservices into `mitra-core-service`, dramatically reducing operational overhead while retaining domain separation at the code level.
 
 ```mermaid
 graph TD
-    UserApp["Mobile App (React Native)"] --> Gateway["API Gateway (Port 8080)"]
-    Gateway --> Discovery["Discovery Service (Eureka)"]
-    Gateway --> Auth_Service["Auth Service"]
-    Gateway --> Feed_Service["Feed Service"]
-    Gateway --> Media_Service["Media Service"]
-    Gateway --> News_Service["News Service"]
-    Gateway --> Social_Service["Social Service"]
-    
-    Feed_Service --> DB[("MySQL Database")]
-    Feed_Service --> ObjectStore["Object Storage"]
-    Feed_Service --> Redis[("Redis Cache")]
-    
-    Gateway --> ELK["Elastic Stack (Logging & APM)"]
-    Auth_Service --> ELK
-    Feed_Service --> ELK
-    Media_Service --> ELK
-    News_Service --> ELK
-    Social_Service --> ELK
+    UI["React Frontend (antigravity-ui)"] --> Gateway["mitra-gateway-service\n(Port 8080)"]
+    Gateway --> Discovery["mitra-discovery-service\n(Eureka, Port 8761)"]
+    Gateway --> Auth["mitra-auth-service\n(Port 8081)"]
+    Gateway --> Core["mitra-core-service\n(Port 8082)\nFeed | Social | News | Media"]
+
+    Auth --> MySQL[(MySQL\nmitra_auth DB)]
+    Core --> MySQL2[(MySQL\nmitra_core DB)]
+    Core --> Redis[(Redis Cache)]
+    Core --> Storage["Cloud Storage\n(S3 / Azure Blob)"]
+
+    Gateway --> ELK["Elastic Stack\n(Kibana: 5601)"]
+    Auth --> ELK
+    Core --> ELK
 ```
 
-## 2. Request Flow Breakdown
-For the request `GET http://localhost:8080/api/feed/hierarchical`:
+---
 
-1.  **API Gateway (`gateway-service`)**:
-    *   Receives the request on port 8080.
-    *   Finds the route `/api/feed/**` and queries **Discovery Service (Eureka)** to get the current location of `FEED-SERVICE`.
-    *   Forwards the request (with original headers) to the `feed-service` instance.
-2.  **Discovery Service (`discovery-service`)**:
-    *   Provides the registry information so the Gateway can route requests dynamically without hardcoded IPs.
-3.  **Feed Service (`feed-service`)**:
-    *   **JwtAuthenticationFilter**: Intercepts the request and extracts the JWT.
-    *   **JwtUtil**: Validates the token using a **Public Key** (no call to Auth Service needed). This ensures high performance and service independence.
-    *   **Security Context**: Hydrates the `SecurityContextHolder` with `userId` from the token.
-    *   **Controller**: `FeedController` executes the business logic.
-4.  **Auth Service (`auth-service`)**:
-    *   **Not involved** during this specific request. It only handles the initial login/signup to issue the token.
+## 2. Request Flow: `GET /api/feed/hierarchical`
 
-## 3. Changes Made
-- Updated [implementation_plan.md](file:///d:/Vinayak/Personal_Project/Antigravity/implementation_plan.md) with the new diagram and flow sections.
-- Re-organized the numbering in `implementation_plan.md` for better structure.
+1. **Gateway** receives the request on port 8080.
+2. Route `/api/feed/**` matches → Gateway queries **Eureka** for `MITRA-CORE-SERVICE`.
+3. Request is forwarded to `mitra-core-service` with original `Authorization` header.
+4. **`JwtAuthenticationFilter`** in core service intercepts and extracts the JWT.
+5. **`JwtUtil`** verifies the token using the **Public Key** — no call to auth service.
+6. `userId` is placed in `SecurityContextHolder`.
+7. `FeedController` → `FeedServiceImpl` → `StoryRepository` → MySQL query.
+8. Response returned through Gateway to the client.
 
-## 4. Debugging: 415 Unsupported Media Type
-The `415` error occurred because the `POST /api/stories` endpoint was strictly expecting `multipart/form-data` (which includes both a JSON `story` part and an optional `file` part). Sending raw `application/json` caused the failure.
+---
 
-### Fixes Applied:
-- **StoryController**: Added an overloaded `createStoryJson` method that consumes `application/json`. You can now post stories without files using a regular JSON body.
-- **SecurityConfig**: Added `permitAll()` for the `/error` endpoint. This ensures that if a server-side error occurs, Spring can display the error details instead of being blocked by a secondary `403 Forbidden` error on the error page itself.
+## 3. Internal Module Layout (`mitra-core-service`)
+
+All domain code retains its sub-package structure within a single deployable JAR:
+
+| Package | Domain |
+| :--- | :--- |
+| `com.mitraai.core.feed` | Stories, location-based feed |
+| `com.mitraai.core.social` | Friends, groups |
+| `com.mitraai.core.news` | News ingestion, localized feed |
+| `com.mitraai.core.media` | File upload/download |
+| `com.mitraai.core.security` | Shared JWT filter & config |
+| `com.mitraai.core.config` | Redis, Feign, Jackson, Storage |
+| `com.mitraai.core.client` | Feign clients (auth, social, media) |
+| `com.mitraai.core.dto` | Shared DTOs |
+
+---
+
+## 4. Consolidated Security
+
+A single `SecurityConfig` in `com.mitraai.core.security` covers all API paths:
+
+```java
+.requestMatchers(
+    "/api/feed/**", "/api/news/**", "/api/social/**", "/api/media/**",
+    "/v3/api-docs/**", "/swagger-ui/**", "/actuator/health", ...
+).permitAll()
+.anyRequest().authenticated()
+```
+
+---
+
+## 5. Notable Fixes Applied During Consolidation
+
+| Issue | Fix |
+| :--- | :--- |
+| 4 duplicate `@SpringBootApplication` classes | Replaced with single `CoreApplication.java` |
+| 4 duplicate `SecurityConfig` / `JwtUtil` | Consolidated into `com.mitraai.core.security` |
+| Duplicate `RedisConfig`, `FeignConfig`, `JacksonConfig` | Moved to `com.mitraai.core.config` |
+| Duplicate `AuthServiceClient`, `UserLocationDTO` | Moved to shared `client`/`dto` packages |
+| Missing `LocationData`, `LocalizedFeedResponse`, `NewsArticle` DTOs | Created in `com.mitraai.core.dto` |
+| Missing `MediaServiceClient`, `SocialClient` Feign clients | Created in `com.mitraai.core.client` |
+| `pubDate` type mismatch (LocalDateTime vs String) | Fixed in `NewsArticle` DTO |

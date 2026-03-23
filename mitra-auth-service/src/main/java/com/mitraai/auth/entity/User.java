@@ -1,0 +1,65 @@
+package com.mitraai.auth.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.locationtech.jts.geom.Point;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Entity
+@Table(name = "users")
+@Data
+@NoArgsConstructor
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @Column(unique = true)
+    private String email;
+
+    @Column(nullable = false, unique = true)
+    private String mobileNumber;
+
+    @Column(nullable = false)
+    @JsonIgnore
+    private String password;
+
+    @Column(nullable = false)
+    private String role = "USER";
+
+    @Column(columnDefinition = "POINT")
+    @JsonIgnore
+    private Point homeLocation;
+
+    private String village;
+    private String taluk;
+    private String district;
+    private String state;
+    private String pincode;
+
+    @ElementCollection
+    @CollectionTable(name = "user_preferences", joinColumns = @JoinColumn(name = "user_id"))
+    @MapKeyColumn(name = "preference_key")
+    @Column(name = "preference_value")
+    private Map<String, String> preferences = new HashMap<>();
+
+    @JsonProperty("homeLocation")
+    public Map<String, Double> getFormattedLocation() {
+        if (homeLocation == null) {
+            return null;
+        }
+        Map<String, Double> coords = new HashMap<>();
+        coords.put("longitude", homeLocation.getX());
+        coords.put("latitude", homeLocation.getY());
+        return coords;
+    }
+}

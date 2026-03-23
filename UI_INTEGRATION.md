@@ -1,114 +1,112 @@
-# UI Integration Guide: Antigravity
+# UI Integration Guide: MitraAI
 
-**Date:** 2026-02-14
-**Version:** 1.0
-
-This document outlines the API endpoints, authentication data flow, and resource structures required for frontend integration.
-
-## 1. Global Configuration
-
-*   **Base URL:** `http://localhost:8080` (Gateway)
-*   **Authentication:** Bearer Token (JWT) required in `Authorization` header for all protected endpoints.
-    *   Header: `Authorization: Bearer <token>`
-*   **Content-Type:** `application/json` (unless specifying `multipart/form-data` for uploads).
+**Version:** 2.0 — Macroservice Architecture
+**Base URL:** `http://localhost:8080` (API Gateway)
+**Auth:** `Authorization: Bearer <JWT>` header required on all protected endpoints.
 
 ---
 
-## 2. Authentication & User Profile (`auth-service`)
+## 1. Authentication (`mitra-auth-service`)
 
 ### Login
-*   **Endpoint:** `POST /api/auth/login`
-*   **Body:**
-    ```json
-    {
-      "username": "user1",
-      "password": "password"
-    }
-    ```
-*   **Response:**
-    ```json
-    {
-      "token": "eyJhbG...",
-      "username": "user1",
-      "email": "user1@example.com",
-      "preferences": { "theme": "dark", "lang": "en" }
-    }
-    ```
+```
+POST /api/auth/login
+```
+```json
+{ "username": "user1", "password": "password" }
+```
+**Response:**
+```json
+{ "token": "eyJhbG...", "username": "user1", "email": "user1@example.com" }
+```
 
 ### Register
-*   **Endpoint:** `POST /api/auth/register`
-*   **Body:**
-    ```json
-    {
-      "username": "user1",
-      "password": "password",
-      "email": "user1@example.com",
-      "mobileNumber": "1234567890",
-      "latitude": 12.9716,
-      "longitude": 77.5946
-    }
-    ```
+```
+POST /api/auth/register
+```
+```json
+{
+  "username": "user1", "password": "password",
+  "email": "user1@example.com", "mobileNumber": "1234567890",
+  "latitude": 12.9716, "longitude": 77.5946
+}
+```
 
-### User Preferences
-*   **Get Preferences:** `GET /api/users/{id}/preferences`
-*   **Update Preferences:** `PUT /api/users/{id}/preferences`
-    *   **Body:** `{"preferences": {"theme": "dark", "notifications": "enabled"}}`
-
-### User Profile
-*   **Get Profile:** `GET /api/users/{id}`
-*   **Search Users:** `GET /api/users/search?query=vinayak`
-*   **Update Location:** `PUT /api/users/{id}/location?lat=12.9&lng=77.6`
+### User Management
+| Action | Endpoint |
+| :--- | :--- |
+| Get Profile | `GET /api/users/{id}` |
+| Search Users | `GET /api/users/search?query=name` |
+| Update Location | `PUT /api/users/{id}/location?lat=12.9&lng=77.6` |
+| Get Preferences | `GET /api/users/{id}/preferences` |
+| Update Preferences | `PUT /api/users/{id}/preferences` |
 
 ---
 
-## 3. Social Interactions (`social-service`)
+## 2. Feed (`mitra-core-service`)
+
+| Action | Endpoint | Notes |
+| :--- | :--- | :--- |
+| Hierarchical Feed | `GET /api/feed/hierarchical` | Location-based: village → taluk → district |
+| Friends Feed | `GET /api/feed/friends` | Stories from connected users |
+| Create Story | `POST /api/feed/stories` (JSON) | Text-only story |
+| Create Story with Media | `POST /api/feed/stories/upload` (Multipart) | With image/video |
+| Get Story | `GET /api/feed/stories/{id}` | |
+| Delete Story | `DELETE /api/feed/stories/{id}` | Owner only |
+
+---
+
+## 3. Social (`mitra-core-service`)
 
 ### Friend Management
-*   **List Friends:** `GET /api/social/friends/{userId}/list`
-    *   Returns: `[101, 102, 105]` (List of Friend User IDs)
-*   **Pending Requests:** `GET /api/social/friends/{userId}/pending`
-*   **Send Request:** `POST /api/social/friends/request?requesterId={id}`
-    *   **Body:** `{"targetUserId": 102}`
-*   **Respond to Request:** `PUT /api/social/friends/{requestId}/respond?status=ACCEPTED`
-    *   Status options: `ACCEPTED`, `REJECTED`
+| Action | Endpoint |
+| :--- | :--- |
+| List Friends | `GET /api/social/friends/{userId}/list` |
+| Pending Requests | `GET /api/social/friends/{userId}/pending` |
+| Send Request | `POST /api/social/friends/request?requesterId={id}` |
+| Respond to Request | `PUT /api/social/friends/{requestId}/respond?status=ACCEPTED` |
 
 ### Group Management
-*   **Create Group:** `POST /api/social/groups`
-    *   **Body:** `{"name": "Local News Hub", "description": "Discuss local news", "createdBy": 101}`
-*   **Add Member:** `POST /api/social/groups/{groupId}/members`
-    *   **Body:** `{"userId": 102}`
-*   **List Groups:** `GET /api/social/groups/user/{userId}`
+| Action | Endpoint |
+| :--- | :--- |
+| Create Group | `POST /api/social/groups` |
+| Add Member | `POST /api/social/groups/{groupId}/members` |
+| List Groups | `GET /api/social/groups/user/{userId}` |
 
 ---
 
-## 4. Content Feeds (`feed-service`)
+## 4. News (`mitra-core-service`)
 
-### Feeds
-*   **Main Feed (Hierarchical):** `GET /api/feed/hierarchical`
-    *   Logic: Prioritizes local content based on User's location (District -> State -> National).
-*   **Friends Feed:** `GET /api/feed/friends`
-    *   Logic: Shows stories from connected friends.
+| Action | Endpoint | Notes |
+| :--- | :--- | :--- |
+| Local News Feed | `GET /api/news/local-feed` | Params: `?pincode=&taluk=&district=&state=` |
+| News by Keyword | `GET /api/news?keyword=cricket` | |
+| List Sources | `GET /api/news/sources` | |
+| Add RSS Sources | `POST /api/news/sources/bulk` | Admin |
 
----
-
-## 5. News & Information (`news-service`)
-
-### Local News
-*   **Get News:** `GET /api/news/local-feed`
-*   **Params (Optional):** `?pincode=560001&district=Bangalore`
-    *   If params are omitted, logic currently defaults or requires implementation to fetch from user profile context if implicit.
-
-### News Sources
-*   **List Sources:** `GET /api/news/sources`
-*   **Add Source:** `POST /api/news/sources/bulk`
-    *   **Body:** `[{"name": "Local Times", "url": "https://example.com/rss", "region": "Bangalore"}]`
+**`LocalizedFeedResponse` shape:**
+```json
+{
+  "userLocation": { "pincode": "560001", "taluk": "Bangalore North", "district": "Bangalore", "state": "Karnataka" },
+  "feed": { "district": [...], "state": [...], "national": [...], "categories": { "cricket": [...] } }
+}
+```
 
 ---
 
-## 6. Media Management (`media-service`)
+## 5. Media (`mitra-core-service`)
 
-### File Operations
-*   **Upload:** `POST /api/media/upload` (Multipart)
-    *   Params: `file` (Binary), `folder` (String, e.g., "avatars", "posts")
-    *   Returns: File URL/Path string.
-*   **View/Download:** `GET /api/media/files/{folder}/{fileName}`
+| Action | Endpoint |
+| :--- | :--- |
+| Upload File | `POST /api/media/upload` (Multipart: `file`, `folder`) |
+| View/Download | `GET /api/media/files/{folder}/{fileName}` |
+
+---
+
+## 6. Swagger / API Docs
+
+| Service | Swagger UI |
+| :--- | :--- |
+| Auth Service | http://localhost:8081/swagger-ui.html |
+| Core Service | http://localhost:8082/swagger-ui.html |
+| Via Gateway | http://localhost:8080/swagger-ui.html |

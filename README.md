@@ -1,57 +1,62 @@
-# Antigravity Microservices
+# MitraAI — Location-Based Social Platform
 
-Antigravity is a location-based social feed microservices ecosystem built with Spring Boot, MySQL, Redis, and Eureka.
+MitraAI is a location-aware social and news platform built on a macroservice architecture using Spring Boot, Spring Cloud, MySQL, Redis, and the Elastic Stack.
+
+## 🏗️ Architecture Overview
+
+The application uses **two core backend services** behind a unified API Gateway:
+
+| Service | Role |
+| :--- | :--- |
+| **mitra-auth-service** | Authentication, User Management, Preferences |
+| **mitra-core-service** | Feed, Social, News, and Media (consolidated) |
+| **mitra-gateway-service** | Unified API entry point (port 8080) |
+| **mitra-discovery-service** | Eureka service registry |
+
+---
 
 ## 🚀 Getting Started
 
-Follow these steps to bring the entire system up using Docker.
+### Prerequisites
+- [Docker Desktop](https://www.docker.com/get-started) installed and **running**.
+- Java 17 + Maven (for local development).
 
-### 1. Prerequisites
-- [Docker](https://www.docker.com/get-started) installed on your machine.
-- [Docker Compose](https://docs.docker.com/compose/install/) (included with Docker Desktop).
+### Configuration
+The system uses a `.env` file for secrets. Review it before launching:
+```
+DB_ROOT_PASSWORD=...
+JWT_KEYSTORE_PASSWORD=mitraai123
+NEWS_API_KEY=...
+```
+> The `.env` file is gitignored. Do not commit secrets.
 
-### 2. Configuration
-The system uses a `.env` file for secrets and infrastructure configuration. 
-- Open the [`.env`](./.env) file in the root directory.
-- Review the default passwords and settings.
-- **Note**: The `.env` file is gitignored for security.
-
-### 3. Build and Launch
-Run the following command from the root directory to build the images and start the containers:
-
+### Build & Launch
 ```bash
 docker-compose up --build
 ```
 
-### 4. Verification
+### Verification
 
-Once the services are up, you can verify them at these locations:
-
-| Service | Port | Description |
+| Service | URL | Description |
 | :--- | :--- | :--- |
-| **API Gateway** | 8080 | Central Entry Point |
-| **Discovery Service** | 8761 | Eureka Dashboard |
-| **Auth Service** | 8081 | Identity & Auth |
-| **Feed Service** | 8082 | Location & Social Feed |
-| **Media Service** | 8083 | Multi-Cloud Media Storage |
-| **News Service** | 8084 | Localized News Aggregator |
-| **Social Service** | 8086 | Relationships & Groups |
-| **Kibana** | 5601 | Log Analysis & APM |
+| **API Gateway** | http://localhost:8080 | Central entry point |
+| **Eureka Dashboard** | http://localhost:8761 | Service registry |
+| **Auth Service** | http://localhost:8081 | Identity & Auth |
+| **Core Service** | http://localhost:8082 | Feed, Social, News, Media |
+| **Kibana** | http://localhost:5601 | Logs & APM |
 
-### 5. Documentation
-
-The project includes detailed documentation for each layer:
-
-- **Architecture**: See [WALKTHROUGH.md](./WALKTHROUGH.md) for request flows.
-- **Frontend Integration**: See [UI_INTEGRATION.md](./UI_INTEGRATION.md) for API contracts.
-- **Security**: See [JWT_FLOW.md](./JWT_FLOW.md).
-- **Operations**: See [PRODUCTION_READINESS.md](./PRODUCTION_READINESS.md).
-
-### 6. Stopping the System
-To stop and remove the containers, use:
+### Stopping
 ```bash
 docker-compose down
 ```
 
 ---
-*For a detailed log of recent changes and architectural flow, see [WALKTHROUGH.md](./WALKTHROUGH.md).*
+
+## 📚 Documentation
+
+| Document | Purpose |
+| :--- | :--- |
+| [WALKTHROUGH.md](./WALKTHROUGH.md) | Architecture & request flow diagrams |
+| [UI_INTEGRATION.md](./UI_INTEGRATION.md) | API contracts for frontend integration |
+| [JWT_FLOW.md](./JWT_FLOW.md) | Stateless JWT auth architecture |
+| [PRODUCTION_READINESS.md](./PRODUCTION_READINESS.md) | Operations & security readiness report |

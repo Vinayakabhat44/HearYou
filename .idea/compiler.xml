@@ -7,14 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="auth-service" />
-        <module name="news-service" />
-        <module name="feed-service" />
-        <module name="discovery-service" />
-        <module name="gateway-service" />
-        <module name="media-service" />
+        <module name="mitra-discovery-service" />
+        <module name="mitra-gateway-service" />
+        <module name="mitra-auth-service" />
+        <module name="mitra-core-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="auth-service" target="17" />
+      <module name="discovery-service" target="17" />
+      <module name="feed" target="1.5" />
+      <module name="feed-service" target="17" />
+      <module name="gateway-service" target="17" />
+      <module name="media-service" target="17" />
+      <module name="news-service" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -24,6 +31,10 @@
       <module name="feed-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
       <module name="media-service" options="-parameters" />
+      <module name="mitra-auth-service" options="-parameters" />
+      <module name="mitra-core-service" options="-parameters" />
+      <module name="mitra-discovery-service" options="-parameters" />
+      <module name="mitra-gateway-service" options="-parameters" />
       <module name="news-service" options="-parameters" />
     </option>
   </component>
